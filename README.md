@@ -1,38 +1,62 @@
-# create-svelte
+PostgreSQL
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Do this every time
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+sudo service postgresql start
+sudo -u postgres psql mbdb
+\conninfo
+ctrl d
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+For changes in database:
 
-To create a production version of your app:
-
-```bash
-npm run build
+```
+npx prisma migrate dev --name name_of_your_migration
+npx prisma db seed
 ```
 
-You can preview the production build with `npm run preview`.
+Postgres stuff:
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```
+sudo -u postgres createdb db_name
+sudo -u postgres psql db_name
+```
+
+<!-- ```
+sudo service postgresql start
+pg_lsclusters
+sudo -u postgres psql
+sudo service postgresql restart
+```
+
+```
+make
+su
+make install
+adduser postgres
+mkdir /usr/local/pgsql/data
+chown postgres /usr/local/pgsql/data
+
+su - postgres
+locate initdb
+/usr/lib/postgresql/12/bin/initdb -D /usr/lib/postgresql/12/data
+/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
+/usr/local/pgsql/bin/createdb test
+/usr/local/pgsql/bin/psql test
+```
+
+Success. You can now start the database server using:
+
+```
+su - postgres
+
+/usr/lib/postgresql/12/bin/pg_ctl -D /usr/lib/postgresql/12/data -l logfile start
+```
+
+```
+\l
+\c music-blog
+``` -->

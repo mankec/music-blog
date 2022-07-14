@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id     Int     @id @default(autoincrement())
+  email  String  @unique
+  artists Artist[]
+}
+
+model Artist {
+  id Int @id @default(autoincrement())
+  users User[]
+}
+
+model Album {
+  id Int @id @default(autoincrement())
+  album_name String
+  year_of_release Int
+  cover_img String
+  tracks Track[]
+  genres Genre[]
+}
+
+model Track {
+  id Int @id @default(autoincrement())
+  album_track_names String[]
+  albums Album[]
+}
+
+model Genre {
+  id Int @id @default(autoincrement())
+  album_genre_names String[]
+  albums Album[]
+}
