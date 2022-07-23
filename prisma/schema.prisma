@@ -15,7 +15,9 @@ model User {
 
 model Artist {
   id Int @id @default(autoincrement())
+  artist_name String
   users User[]
+  albums Album[] 
 }
 
 model Album {
@@ -23,18 +25,19 @@ model Album {
   album_name String
   year_of_release Int
   cover_img String
-  tracks Track[]
+  artists Artist[] 
+  tracks Track[] 
   genres Genre[]
 }
 
 model Track {
   id Int @id @default(autoincrement())
-  album_track_names String[]
+  track_names String[]
   albums Album[]
 }
 
 model Genre {
   id Int @id @default(autoincrement())
-  album_genre_names String[]
+  genre_names String[]
   albums Album[]
 }
