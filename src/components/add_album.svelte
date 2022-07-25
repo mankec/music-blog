@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths'
 	let album_name = ''
 	let year_of_release = ''
 	let artist_name = ''
@@ -7,7 +8,11 @@
 </script>
 
 <div class="albums-content-container">
-	<form action="/home" method="post" autocomplete="off">
+	<form
+		action="{base}/home"
+		method="post"
+		autocomplete="off"
+	>
 		<div class="grid-form-container">
 			<div class="col-label-1">
 				<label for="add-album">Album name:</label>
@@ -76,9 +81,7 @@
 				/>
 			</div>
 
-			<button class="btn w-84" type="submit"
-				>'Submit'</button
-			>
+			<button class="btn w-84" type="submit">Submit</button>
 		</div>
 	</form>
 </div>

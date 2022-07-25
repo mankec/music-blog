@@ -8,8 +8,13 @@ datasource db {
 }
 
 model User {
-  id     Int     @id @default(autoincrement())
-  email  String  @unique
+  id           String   @id @default(uuid())
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  username     String   @unique
+  password_hash String
+  user_auth_token String   @unique @default(cuid())
+//  email  String  @unique
   artists Artist[]
 }
 

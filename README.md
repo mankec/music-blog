@@ -15,6 +15,7 @@ For changes in database:
 
 ```
 npx prisma migrate dev --name name_of_your_migration
+npx prisma db push
 npx prisma db seed
 ```
 

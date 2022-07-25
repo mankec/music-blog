@@ -1,0 +1,52 @@
+import type { RequestHandler } from '@sveltejs/kit'
+import * as bcrypt from 'bcrypt'
+
+import prisma from '$root/lib/prisma'
+
+export const POST: RequestHandler = async ({ request }) => {
+	const form = await request.formData()
+	const username = form.get('username')
+	const password = form.get('password')
+
+	if (
+		typeof username !== 'string' ||
+		typeof password !== 'string'
+	) {
+		return {
+			status: 400,
+			body: {
+				error: 'Something went wrong.'
+			}
+		}
+	}
+
+	if (!username || !password) {
+		return {
+			status: 400,
+			body: {
+				error: 'Username and password is required.'
+			}
+		}
+	}
+
+	try {
+		await prisma.user.create({
+			data: {
+				username: username,
+				password_hash: await bcrypt.hash(password, 10)
+			}
+		})
+
+		return {
+			status: 200,
+			body: { success: 'Success.' }
+		}
+	} catch (error) {
+		return {
+			status: 400,
+			body: {
+				error: 'User already exists.'
+			}
+		}
+	}
+}

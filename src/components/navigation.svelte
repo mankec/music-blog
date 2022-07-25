@@ -1,9 +1,13 @@
+<script lang="ts">
+	import { base } from '$app/paths'
+</script>
+
 <nav class="navbar">
-	<a href="/">HOME</a>
+	<a href="{base}/home">HOME</a>
 	<ul>
-		<li><a href="home/bands">Bands</a></li>
-		<li><a href="home/albums">Albums</a></li>
-		<li><a href="home/genres">Genres</a></li>
+		<li><a href="{base}/home/bands">Bands</a></li>
+		<li><a href="{base}/home/albums">Albums</a></li>
+		<li><a href="{base}/home/genres">Genres</a></li>
 	</ul>
 </nav>
 

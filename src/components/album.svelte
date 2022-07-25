@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { AlbumType } from '$root/types'
+	// import hold_your_colour from '$lib/images/hold_your_colour.jpg'
 
 	export let album: AlbumType
 
@@ -29,7 +30,7 @@
 		</div>
 		<div class="album-cover-container">
 			<img
-				src="src/images/hold_your_colour.jpg"
+				src="images/hold_your_colour.jpg"
 				alt="album cover"
 			/>
 		</div>
