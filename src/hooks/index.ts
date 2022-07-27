@@ -1,7 +1,7 @@
 import type { GetSession, Handle } from '@sveltejs/kit'
 import * as cookie from 'cookie'
 
-import { prisma } from '$root/lib/prisma'
+import prisma from '$lib/prisma'
 
 export const handle: Handle = async ({
 	event,

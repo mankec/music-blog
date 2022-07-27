@@ -8,6 +8,7 @@ export type AlbumType = {
 	cover_img: string
 }
 
-// export type ArtistType = {
-// 	artist?: object
-// }
+export type ArtistType = {
+	id: number
+	artist_name?: any
+}

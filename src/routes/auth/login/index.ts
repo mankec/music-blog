@@ -2,9 +2,9 @@ import type { RequestHandler } from '@sveltejs/kit'
 import * as bcrypt from 'bcrypt'
 import * as cookie from 'cookie'
 
-import prisma from '$root/lib/prisma'
+import prisma from '$lib/prisma'
 
-export const POST: RequestHandler = async ({ request }) => {
+export const post: RequestHandler = async ({ request }) => {
 	const form = await request.formData()
 	const username = form.get('username')
 	const password = form.get('password')
@@ -58,7 +58,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				user.user_auth_token,
 				{
 					// send cookie for every page
-					path: 'mb/',
+					path: '/mb/',
 					// server side only cookie so you can't use `document.cookie`
 					httpOnly: true,
 					// only requests from same site can send cookies

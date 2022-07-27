@@ -1,18 +1,10 @@
 import type { RequestHandler } from '@sveltejs/kit'
-
-import prisma from '$root/lib/prisma'
+import prisma from '$lib/prisma'
+import { identity } from 'svelte/internal'
 
 export const get: RequestHandler = async () => {
 	const artists_data = await prisma.artist.findMany({
-		include: {
-			users: true,
-			albums: {
-				include: {
-					genres: true,
-					tracks: true
-				}
-			}
-		}
+		include: { albums: true, users: true }
 	})
 
 	const albums_data = await prisma.album.findMany({
@@ -71,6 +63,11 @@ export const post: RequestHandler = async ({ request }) => {
 	const track_names = String(form.get('track_names'))
 	const genre_names = String(form.get('genre_names'))
 
+	const increment = function (id: number) {
+		return id++
+	}
+	let id
+
 	await prisma.album.create({
 		data: {
 			album_name: album_name,
@@ -78,7 +75,8 @@ export const post: RequestHandler = async ({ request }) => {
 			year_of_release: year_of_release,
 			artists: {
 				create: {
-					artist_name: artist_name
+					id: id,
+					artist_name
 				}
 			},
 			tracks: {

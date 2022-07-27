@@ -1,9 +1,9 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import * as bcrypt from 'bcrypt'
 
-import prisma from '$root/lib/prisma'
+import prisma from '$lib/prisma'
 
-export const POST: RequestHandler = async ({ request }) => {
+export const post: RequestHandler = async ({ request }) => {
 	const form = await request.formData()
 	const username = form.get('username')
 	const password = form.get('password')
@@ -32,7 +32,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	try {
 		await prisma.user.create({
 			data: {
-				username: username,
+				username,
 				password_hash: await bcrypt.hash(password, 10)
 			}
 		})

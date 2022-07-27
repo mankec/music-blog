@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type { AlbumType } from '$root/types'
-	// import hold_your_colour from '$lib/images/hold_your_colour.jpg'
 
 	export let album: AlbumType
 
-	export let artist_data = album.artist_name[0]
-	export let artist = Object.values(artist_data)
+	// export let artist_data = album.artist_name[0]
+	// export let artist = Object.values(artist_data)
 
 	export let track_data = album.track_names[0]
 	export let track_names: any =

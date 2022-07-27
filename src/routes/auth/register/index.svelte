@@ -5,7 +5,7 @@
 		if (session.user) {
 			return {
 				status: 302,
-				redirect: '/mb/home'
+				redirect: '/mb'
 			}
 		}
 
@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-	import { send } from '$root/lib/api'
+	import { send } from '$lib/api'
 	import { base } from '$app/paths'
 
 	// these props are passed from the page endpoint
@@ -38,7 +38,7 @@
 			success = response.success
 		}
 
-		formEl.reset() // using the web platform 💪
+		formEl.reset()
 	}
 </script>
 

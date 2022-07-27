@@ -5,7 +5,7 @@
 		if (session.user) {
 			return {
 				status: 302,
-				redirect: 'mb/home'
+				redirect: '/mb/home'
 			}
 		}
 
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 	import { session } from '$app/stores'
-	import { send } from '$root/lib/api'
+	import { send } from '$lib/api'
 
 	export let error: string
 
