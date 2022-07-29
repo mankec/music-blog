@@ -21,3 +21,11 @@ export function slugify(string: string) {
 		.replace(/^-+/, '') // Trim - from start of text
 		.replace(/-+$/, '') // Trim - from end of text
 }
+
+export function truncateString(str: string, num: number) {
+	if (str.length > num) {
+		return str.slice(0, num) + '...'
+	} else {
+		return str
+	}
+}
