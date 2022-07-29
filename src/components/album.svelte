@@ -1,22 +1,32 @@
 <script lang="ts">
 	import type { AlbumType } from '$root/types'
+	import type { ArtistType } from '$root/types'
+	import { slugify } from '$lib/helper'
 
 	export let album: AlbumType
+	export let artist: ArtistType
 
-	// export let artist_data = album.artist_name[0]
-	// export let artist = Object.values(artist_data)
+	// export let track_data = album.track_names[0]
+	// export let track_names: any =
+	// 	Object.values(track_data).slice(1)
 
-	export let track_data = album.track_names[0]
-	export let track_names: any =
-		Object.values(track_data).slice(1)
-
-	export let genre_data = album.genre_names[0]
-	export let genre_names: any =
-		Object.values(genre_data).slice(1)
+	// export let genre_data = album.genre_names[0]
+	// export let genre_names: any =
+	// 	Object.values(genre_data).slice(1)
 </script>
 
-<!-- ------------------------ -->
+<h1>
+	<li>
+		<a
+			href="{slugify(artist.artist_name)}/{slugify(
+				album.album_name
+			)}
+			">{album.album_name}</a
+		>
+	</li>
+</h1>
 
+<!-- 
 <div class="album-block">
 	<div class="album-block-1">
 		<div class="album-header">
@@ -64,8 +74,7 @@
 			</div>
 		</div>
 	</div>
-</div>
-
+</div> -->
 <style>
 	.album-block {
 		margin: 1rem;

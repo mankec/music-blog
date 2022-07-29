@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { base } from '$app/paths'
+	import { slugify } from '$root/lib/helper'
+	import type { ArtistType } from '$root/types'
+
+	export let artist: ArtistType
+
+	let artist_name = artist.artist_name
 	let album_name = ''
 	let year_of_release = ''
-	let artist_name = ''
 	let track_names: any = []
 	let genre_names = ''
 </script>
 
+<!-- prettier-ignore -->
 <div class="albums-content-container">
 	<form
-		action="{base}/home"
+		action="{base}/home/artists/{artist.id}/{slugify(artist_name)}/{slugify(album_name)}"
 		method="post"
 		autocomplete="off"
 	>
@@ -38,19 +44,6 @@
 					bind:value={year_of_release}
 					name="year_of_release"
 					placeholder=" 1970"
-					type="text"
-				/>
-			</div>
-
-			<div class="col-label-3">
-				<label for="add-artist">Artist:</label>
-			</div>
-			<div class="col-input-3">
-				<input
-					aria-label="Add new artist"
-					bind:value={artist_name}
-					name="artist_name"
-					placeholder=" The Doors"
 					type="text"
 				/>
 			</div>
@@ -84,6 +77,7 @@
 			<button class="btn w-84" type="submit">Submit</button>
 		</div>
 	</form>
+
 </div>
 
 <style>

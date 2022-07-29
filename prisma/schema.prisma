@@ -19,8 +19,8 @@ model User {
 }
 
 model Artist {
-  id          Int      @id @default(autoincrement())
-  artist_name String[]
+  id          String  @id @default(uuid())
+  artist_name String
   users       User[]
   albums      Album[]
 }

@@ -5,7 +5,7 @@
 <nav class="navbar">
 	<a href="{base}/home">HOME</a>
 	<ul>
-		<li><a href="{base}/home/bands">Bands</a></li>
+		<li><a href="{base}/home/artists">Artists</a></li>
 		<li><a href="{base}/home/albums">Albums</a></li>
 		<li><a href="{base}/home/genres">Genres</a></li>
 	</ul>
@@ -19,7 +19,7 @@
 	}
 
 	.navbar {
-		width: 12%;
+		width: 16%;
 		height: 100%;
 		background-color: #1a1a1a;
 
@@ -30,10 +30,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
+		align-items: flex-end;
 	}
 
 	.navbar ul {
-		width: 100%;
+		width: 75%;
 
 		margin-left: 1rem;
 		list-style-type: none;

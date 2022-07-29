@@ -9,6 +9,7 @@
 
 <style>
 	.albums-content-container {
-		width: 88%;
+		width: 68%;
+		margin: 0 auto;
 	}
 </style>
