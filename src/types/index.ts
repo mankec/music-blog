@@ -17,5 +17,10 @@ export type ArtistType = {
 
 export type GenreType = {
 	id: string
-	genre_names?: any
+	genre_name?: any
+}
+
+export type TrackType = {
+	id: string
+	track_name?: any
 }

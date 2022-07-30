@@ -8,7 +8,7 @@ export const post: RequestHandler = async ({ request }) => {
 		form.get('year_of_release')
 	)
 	const track_names = String(form.get('track_names'))
-	const genre_names = String(form.get('genre_names'))
+	const genre_name = String(form.get('genre_name'))
 
 	await prisma.album.create({
 		data: {
@@ -22,7 +22,7 @@ export const post: RequestHandler = async ({ request }) => {
 			},
 			genres: {
 				create: {
-					genre_names: genre_names.split(',')
+					genre_name
 				}
 			}
 		}

@@ -9,7 +9,7 @@
 	let album_name = ''
 	let year_of_release = ''
 	let track_names: any = []
-	let genre_names = ''
+	let genre_name = ''
 </script>
 
 <!-- prettier-ignore -->
@@ -62,12 +62,12 @@
 			</div>
 
 			<div class="col-label-5">
-				<label for="add-genre-names">Genre names:</label>
+				<label for="add-genre-names">Genre name:</label>
 			</div>
 			<div class="col-input-5 w-84">
 				<input
 					aria-label="Add genre names"
-					bind:value={genre_names}
+					bind:value={genre_name}
 					name="genre_names"
 					placeholder=" genre_name1, genre_name2, genre_name3 etc."
 					type="text"

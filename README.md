@@ -1,7 +1,6 @@
 PostgreSQL
 
 Do this every time
-<!-- const artist_id = Math.floor(Math.random() * 10000) -->
 
 ```
 sudo service postgresql start
@@ -28,77 +27,15 @@ sudo -u postgres createdb db_name
 sudo -u postgres psql db_name
 ```
 
-<!-- ```
-sudo service postgresql start
-pg_lsclusters
-sudo -u postgres psql
-sudo service postgresql restart
-```
+TODOS
 
-```
-make
-su
-make install
-adduser postgres
-mkdir /usr/local/pgsql/data
-chown postgres /usr/local/pgsql/data
+Auth restrictions
+Progressive enhancement
+Learn more about endpoints for components
 
-su - postgres
-locate initdb
-/usr/lib/postgresql/12/bin/initdb -D /usr/lib/postgresql/12/data
-/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data -l logfile start
-/usr/local/pgsql/bin/createdb test
-/usr/local/pgsql/bin/psql test
-```
+Style the app
+Make app accessible
 
-Success. You can now start the database server using:
+Async functions for submit so it doesn't send data to endpoint if possible?
 
-```
-su - postgres
-
-/usr/lib/postgresql/12/bin/pg_ctl -D /usr/lib/postgresql/12/data -l logfile start
-```
-
-```
-\l
-\c music-blog
-``` -->
-
-<!-- import type { RequestHandler } from '@sveltejs/kit'
-import prisma from '$lib/prisma'
-
-export const post: RequestHandler = async ({ request }) => {
-	const form = await request.formData()
-	const album_name = String(form.get('album_name'))
-	const artist_name = String(form.get('artist_name'))
-	const year_of_release = Number(
-		form.get('year_of_release')
-	)
-	const track_names = String(form.get('track_names'))
-	const genre_names = String(form.get('genre_names'))
-
-	await prisma.album.create({
-		data: {
-			album_name: album_name,
-			cover_img: 'pp',
-			year_of_release: year_of_release,
-			artists: {
-				create: {
-					artist_name
-				}
-			},
-			tracks: {
-				create: {
-					track_names: track_names.split(',')
-				}
-			},
-			genres: {
-				create: {
-					genre_names: genre_names.split(',')
-				}
-			}
-		}
-	})
-
-	return {}
-} -->
+Do not specify form action if you are sending data to the endpoint of the page you are on, not only is it unnecessary it won't work either.

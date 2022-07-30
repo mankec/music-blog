@@ -36,13 +36,13 @@ model Album {
 }
 
 model Track {
-  id          Int      @id @default(autoincrement())
-  track_names String[]
-  albums      Album[]
+  id         Int     @id @default(autoincrement())
+  track_name String
+  albums     Album[]
 }
 
 model Genre {
-  id          Int      @id @default(autoincrement())
-  genre_names String[]
-  albums      Album[]
+  id         Int     @id @default(autoincrement())
+  genre_name String  @unique
+  albums     Album[]
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Genre from '$root/components/genre.svelte'
+	import Genre from '$root/components/genre/genre.svelte'
 	import type { GenreType } from '$root/types'
 
 	export let genres: GenreType[] = []
