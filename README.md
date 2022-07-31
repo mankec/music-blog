@@ -37,5 +37,6 @@ Style the app
 Make app accessible
 
 Async functions for submit so it doesn't send data to endpoint if possible?
+Make ids numbers if possible
 
 Do not specify form action if you are sending data to the endpoint of the page you are on, not only is it unnecessary it won't work either.

@@ -17,3 +17,6 @@
 		<li><ArtistList {artist} /></li>
 	{/each}
 </ul>
+
+<style>
+</style>

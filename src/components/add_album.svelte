@@ -1,21 +1,12 @@
 <script lang="ts">
-	import { base } from '$app/paths'
-	import { slugify } from '$root/lib/helper'
-	import type { ArtistType } from '$root/types'
-
-	export let artist: ArtistType
-
-	let artist_name = artist.artist_name
 	let album_name = ''
 	let year_of_release = ''
-	let track_names: any = []
-	let genre_name = ''
 </script>
 
 <!-- prettier-ignore -->
 <div class="albums-content-container">
 	<form
-		action="{base}/home/artists/{artist.id}/{slugify(artist_name)}/{slugify(album_name)}"
+		action=""
 		method="post"
 		autocomplete="off"
 	>
@@ -44,32 +35,6 @@
 					bind:value={year_of_release}
 					name="year_of_release"
 					placeholder=" 1970"
-					type="text"
-				/>
-			</div>
-
-			<div class="col-label-4">
-				<label for="add-track-names">Track names:</label>
-			</div>
-			<div class="col-input-4 w-84">
-				<input
-					aria-label="Add track names"
-					bind:value={track_names}
-					name="track_names"
-					placeholder=" track_name1, track_name2, track_name3 etc."
-					type="text"
-				/>
-			</div>
-
-			<div class="col-label-5">
-				<label for="add-genre-names">Genre name:</label>
-			</div>
-			<div class="col-input-5 w-84">
-				<input
-					aria-label="Add genre names"
-					bind:value={genre_name}
-					name="genre_names"
-					placeholder=" genre_name1, genre_name2, genre_name3 etc."
 					type="text"
 				/>
 			</div>
@@ -112,27 +77,6 @@
 	}
 	.col-input-2 {
 		grid-column: span 1 / 5;
-	}
-	.col-label-3 {
-		grid-column: span 1 / 2;
-		justify-self: end;
-	}
-	.col-input-3 {
-		grid-column: span 1 / 3;
-	}
-	.col-label-4 {
-		grid-column: span 1 / 2;
-		justify-self: end;
-	}
-	.col-input-4 {
-		grid-column: span 3 / 5;
-	}
-	.col-label-5 {
-		grid-column: span 1 / 2;
-		justify-self: end;
-	}
-	.col-input-5 {
-		grid-column: span 3 / 5;
 	}
 
 	button {

@@ -5,9 +5,9 @@
 <nav class="navbar">
 	<a href="{base}/home">HOME</a>
 	<ul>
-		<li><a href="{base}/home/artists">Artists</a></li>
-		<li><a href="{base}/home/albums">Albums</a></li>
-		<li><a href="{base}/home/genres">Genres</a></li>
+		<li><a href="{base}/home/artist">Artists</a></li>
+		<li><a href="{base}/home/album">Albums</a></li>
+		<li><a href="{base}/home/genre">Genres</a></li>
 	</ul>
 </nav>
 

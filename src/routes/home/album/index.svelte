@@ -6,9 +6,9 @@
 </script>
 
 <div class="album-blocks-container">
-	{#each albums as album (album.id)}
+	<!-- {#each albums as album (album.id)}
 		<Album {album} />
-	{/each}
+	{/each} -->
 </div>
 
 <style>

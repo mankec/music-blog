@@ -8,11 +8,7 @@
 </script>
 
 <li>
-	<a
-		href="{base}/home/artists/{artist.id}/{slugify(
-			artist_name
-		)}">{artist_name}</a
-	>
+	<a href="{base}/home/artist/{artist.id}">{artist_name}</a>
 </li>
 
 <style>

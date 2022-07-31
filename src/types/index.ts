@@ -1,5 +1,5 @@
 export type AlbumType = {
-	id: number
+	id: string
 	artist_name?: any
 	album_name: string
 	tracks: any
@@ -23,4 +23,5 @@ export type GenreType = {
 export type TrackType = {
 	id: string
 	track_name?: any
+	albums: string[]
 }

@@ -26,7 +26,7 @@ model Artist {
 }
 
 model Album {
-  id              Int      @id @default(autoincrement())
+  id              String   @id @default(uuid())
   album_name      String
   year_of_release Int
   cover_img       String
@@ -36,13 +36,13 @@ model Album {
 }
 
 model Track {
-  id         Int     @id @default(autoincrement())
+  id         String  @id @default(uuid())
   track_name String
   albums     Album[]
 }
 
 model Genre {
-  id         Int     @id @default(autoincrement())
+  id         String  @id @default(uuid())
   genre_name String  @unique
   albums     Album[]
 }

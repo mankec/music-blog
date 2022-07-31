@@ -3,13 +3,13 @@
 </script>
 
 <Navigation />
-<div class="albums-content-container">
-	<slot />
-</div>
+<!-- <div class="albums-content-container"> -->
+<slot />
 
+<!-- </div> -->
 <style>
-	.albums-content-container {
+	/* .albums-content-container {
 		width: 68%;
 		margin: 0 auto;
-	}
+	} */
 </style>

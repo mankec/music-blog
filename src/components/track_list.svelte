@@ -6,5 +6,3 @@
 
 	export let track_name = track.track_name
 </script>
-
-<h1>{track_name}</h1>
