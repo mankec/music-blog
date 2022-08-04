@@ -3,7 +3,7 @@
 	import { session } from '$app/stores'
 </script>
 
-<nav>
+<!-- <nav>
 	{#if !$session.user}
 		<a href="{base}/auth/login">Login</a>
 		<a href="{base}/auth/register">Register</a>
@@ -13,6 +13,6 @@
 		<a href="{base}/protected">Admin</a>
 		<a href="{base}/auth/logout">Log out</a>
 	{/if}
-</nav>
+</nav> -->
 
 <slot />

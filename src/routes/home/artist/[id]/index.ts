@@ -5,15 +5,30 @@ export const post: RequestHandler = async ({
 	request,
 	params
 }) => {
-	// prettier-ignore
 	const form = await request.formData()
 	let album_name: any = String(form.get('album_name'))
-	let year_of_release: any = Number(
-		form.get('year_of_release')
-	)
+	//prettier-ignore
+	let year_of_release: any = Number(form.get('year_of_release'))
+	let album_cover: any = String(form.get('album_cover'))
 
-	if (album_name == 'null') album_name = null
-	if (year_of_release == 'null') year_of_release = null
+	console.log(album_name)
+	console.log(year_of_release)
+	// console.log(album_cover)
+
+	if (
+		album_name === 'null' ||
+		album_name === null ||
+		album_name.trim() === ''
+	)
+		album_name = ''
+	else album_name = album_name.trim()
+	if (
+		year_of_release === 'null' ||
+		year_of_release === null ||
+		year_of_release === 0
+	)
+		year_of_release = 1234
+	else year_of_release = year_of_release
 
 	const existing_albums: any = await prisma.album.findMany({
 		where: { album_name: album_name }
@@ -43,11 +58,12 @@ export const post: RequestHandler = async ({
 		}
 	)
 
-	if (!album_exists || !album_connected)
-		await prisma.album.create({
+	// prettier-ignore
+	if ((!album_exists || !album_connected) && (album_name !== '' && year_of_release !== ''))
+	await prisma.album.create({
 			data: {
 				album_name: album_name,
-				cover_img: '',
+				cover_img: album_cover,
 				year_of_release: year_of_release,
 				artists: {
 					connect: { id: params.id }

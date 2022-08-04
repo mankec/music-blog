@@ -1,62 +1,84 @@
 <script lang="ts">
-	import { base } from '$app/paths'
-	import { slugify } from '$root/lib/helper'
 	let artist_name = ''
 </script>
 
 <div class="albums-content-container">
 	<form
-		action="{base}/home"
+		class="form"
+		action=""
 		method="post"
 		autocomplete="off"
 	>
-		<div class="grid-form-container">
-			<div class="col-label-4">
-				<label for="add-track-names">Artist name:</label>
-			</div>
-			<div class="col-input-4 w-50">
-				<input
-					aria-label="Add track names"
-					bind:value={artist_name}
-					name="artist_name"
-					placeholder=""
-					type="text"
-				/>
-			</div>
-
-			<button class="btn w-50" type="submit">Submit</button>
+		<label for="add-artist">Add artist</label>
+		<div class="add-genre-track-flex">
+			<input
+				class="add-genre-track-input"
+				aria-label="Add track names"
+				bind:value={artist_name}
+				name="artist_name"
+				placeholder="The Doors"
+				type="text"
+			/>
+			<button type="submit" class="btn">
+				<i class="fas fa-regular fa-square-plus" /></button
+			>
 		</div>
 	</form>
 </div>
 
 <style>
-	.w-50 {
-		width: 50%;
+	label {
+		margin-bottom: 3rem;
+		font-size: 2.2rem;
+		text-align: center;
+
+		display: block;
 	}
 
-	.w-84 {
-		width: 84%;
-	}
+	.albums-content-container {
+		height: 22rem;
+		margin-top: 2.5rem;
+		border: 4px solid white;
+		border-radius: 1.6em;
+		background-color: green;
 
-	.grid-form-container {
-		display: grid;
-		grid-template-columns: repeat(4, 120px);
+		display: flex;
+		justify-content: center;
 		align-items: center;
-
-		column-gap: 8px;
-		row-gap: 6px;
 	}
 
-	.col-label-4 {
-		grid-column: span 1 / 2;
-		justify-self: end;
+	.btn {
+		border: none;
+		padding: 0;
+		font-size: 1rem;
+		background: none;
+		border-radius: 0.25em;
 	}
-	.col-input-4 {
-		grid-column: span 3 / 5;
+	.btn:hover {
+		cursor: pointer;
 	}
 
-	button {
-		grid-column: span 3 / 5;
+	input[type='text'].add-genre-track-input {
+		border: none;
+		width: 50%;
+		height: 100%;
+
+		padding: 6px 8px;
+		border: 1px solid #ccc;
+		border-radius: 0.6em;
+	}
+	.fa-square-plus {
+		color: greenyellow;
+		font-size: 2.9em;
+		height: 100%;
+	}
+
+	.add-genre-track-flex {
+		margin-bottom: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	form {
@@ -66,17 +88,5 @@
 
 	input:focus {
 		outline: 1px solid lime;
-	}
-
-	label {
-		font-size: 1.2rem;
-	}
-
-	input[type='text'] {
-		width: 100%;
-		padding: 5px 8px;
-		margin: 8px 0;
-		border: 1px solid #ccc;
-		border-radius: 4px;
 	}
 </style>

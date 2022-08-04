@@ -1,13 +1,22 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
+import { writeFileSync } from 'fs'
 
 export const post: RequestHandler = async ({
 	request,
 	params
 }) => {
 	const form = await request.formData()
+	console.log(request)
+	console.log(form)
 	let genre_name: any = String(form.get('genre_name'))
 	let track_name: any = String(form.get('track_name'))
+	// const data = JSON.parse(
+	// 	(await request.body.read()).toString()
+	// )
+	// console.log(data)
+	// const file = data['image']
+	// writeFileSync(`static/avatar.png`, file, 'base64')
 
 	//	prettier-ignore
 	if (genre_name === 'null' || genre_name === null || genre_name.trim() === '')
@@ -60,7 +69,7 @@ export const get: RequestHandler = async ({
 	params,
 	url
 }) => {
-	const album = await prisma.album.findMany({
+	const album = await prisma.album.findUnique({
 		where: { id: params.id }
 	})
 	const genres = await prisma.genre.findMany({

@@ -1,86 +1,124 @@
 <script lang="ts">
 	let album_name = ''
 	let year_of_release = ''
+	let album_cover = ''
+
 </script>
 
-<!-- prettier-ignore -->
 <div class="albums-content-container">
 	<form
+		class="form"
 		action=""
 		method="post"
 		autocomplete="off"
 	>
-		<div class="grid-form-container">
-			<div class="col-label-1">
-				<label for="add-album">Album name:</label>
-			</div>
-			<div class="col-input-1">
-				<input
-					aria-label="Add album name"
-					bind:value={album_name}
-					name="album_name"
-					placeholder=" Morrison Hotel"
-					type="text"
-				/>
-			</div>
-
-			<div class="col-label-2">
-				<label for="add-year-of-release"
-					>Year of release:</label
-				>
-			</div>
-			<div class="col-input-2 w-50">
-				<input
-					aria-label="Add year album came out"
-					bind:value={year_of_release}
-					name="year_of_release"
-					placeholder=" 1970"
-					type="text"
-				/>
-			</div>
-
-			<button class="btn w-84" type="submit">Submit</button>
+		<label for="add-artist">Add album</label>
+		<div class="add-genre-track-flex">
+			<input
+				class="add-genre-track-input"
+				aria-label="Add album name"
+				bind:value={album_name}
+				name="album_name"
+				placeholder="Morrison Hotel"
+				type="text"
+			/>
+			<input
+				class="year-of-release"
+				aria-label="Add year album's year of release"
+				bind:value={year_of_release}
+				name="year_of_release"
+				placeholder="1970"
+				type="text"
+			/>
+			<input
+				id="fileInput"
+				type="file"
+				name="album_cover"
+				bind:value={album_cover}
+			/>
+			<button type="submit" class="btn">
+				<i class="fas fa-regular fa-square-plus" /></button
+			>
 		</div>
 	</form>
-
 </div>
 
 <style>
-	.w-50 {
-		width: 50%;
+	label {
+		margin-bottom: 3rem;
+		font-size: 2.2rem;
+		text-align: center;
+
+		display: block;
 	}
 
-	.w-84 {
-		width: 84%;
-	}
+	.albums-content-container {
+		height: 22rem;
+		margin-top: 2.5rem;
+		border: 4px solid white;
+		border-radius: 1.6em;
+		background-color: green;
 
-	.grid-form-container {
-		display: grid;
-		grid-template-columns: repeat(4, 120px);
+		display: flex;
+		justify-content: center;
 		align-items: center;
-
-		column-gap: 8px;
-		row-gap: 6px;
 	}
 
-	.col-label-1 {
-		grid-column: span 1 / 2;
-		justify-self: end;
+	.btn {
+		border: none;
+		padding: 0;
+		font-size: 1rem;
+		background: none;
+		border-radius: 0.25em;
 	}
-	.col-input-1 {
-		grid-column: span 1 / 3;
-	}
-
-	.col-label-2 {
-		grid-column: span 1 / 4;
-		justify-self: end;
-	}
-	.col-input-2 {
-		grid-column: span 1 / 5;
+	.btn:hover {
+		cursor: pointer;
 	}
 
-	button {
-		grid-column: span 3 / 5;
+	input[type='text'].add-genre-track-input {
+		border: none;
+		width: 40%;
+		height: 100%;
+
+		padding: 6px 8px;
+		border: 1px solid #ccc;
+		border-radius: 0.6em;
+	}
+	.fa-square-plus {
+		color: greenyellow;
+		font-size: 2.9em;
+		height: 100%;
+	}
+
+	.add-genre-track-flex {
+		margin-bottom: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	input[type='text'].year-of-release {
+		border: none;
+		width: 20%;
+		height: 100%;
+
+		padding: 6px 8px;
+		border: 1px solid #ccc;
+		border-radius: 0.6em;
+	}
+	.fa-square-plus {
+		color: greenyellow;
+		font-size: 2.9em;
+		height: 100%;
+	}
+
+	.add-genre-track-flex {
+		margin-bottom: 3rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	form {
@@ -90,17 +128,5 @@
 
 	input:focus {
 		outline: 1px solid lime;
-	}
-
-	label {
-		font-size: 1.2rem;
-	}
-
-	input[type='text'] {
-		width: 100%;
-		padding: 5px 8px;
-		margin: 8px 0;
-		border: 1px solid #ccc;
-		border-radius: 4px;
 	}
 </style>

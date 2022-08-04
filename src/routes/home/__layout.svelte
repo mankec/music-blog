@@ -1,15 +1,15 @@
 <script lang="ts">
+	import { page } from '$app/stores'
 	import Navigation from '$root/components/navigation.svelte'
 </script>
 
-<Navigation />
-<!-- <div class="albums-content-container"> -->
-<slot />
+{#if $page.url.pathname === '/mb/home'}
+	<slot />
+{:else}
+	<Navigation />
 
-<!-- </div> -->
+	<slot />
+{/if}
+
 <style>
-	/* .albums-content-container {
-		width: 68%;
-		margin: 0 auto;
-	} */
 </style>

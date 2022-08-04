@@ -1,5 +1,6 @@
 <script lang="ts">
 	import hold_your_colour from '$lib/assets/hold_your_colour.jpg'
+	import { base } from '$app/paths'
 
 	import Album from '$root/components/album.svelte'
 	import GenreList from '$root/components/genre/genre_list.svelte'
@@ -8,6 +9,7 @@
 	import type { AlbumType } from '$root/types'
 	import type { GenreType } from '$root/types'
 	import type { TrackType } from '$root/types'
+	import Genre from '$root/components/genre/genre.svelte'
 
 	export let album: AlbumType
 	export let genres: GenreType[] = []
@@ -19,19 +21,50 @@
 
 	export let genre_name = ''
 	export let track_name = ''
+	let album_cover = ''
+	let fileInput: any
+	let files: any
+
+	function getBase64(image: any) {
+		const reader: any = new FileReader()
+		reader.readAsDataURL(image)
+		reader.onload = (e: any) => {
+			album_cover = e.target.result
+			uploadFunction(e.target.result)
+		}
+	}
+
+	async function uploadFunction(imgBase64) {
+		const data = {}
+		const imgData = imgBase64.split(',')
+		data['image'] = imgData[1]
+		console.log(data)
+		await fetch(`/upload`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+	}
 </script>
 
 <div class="container">
 	<div class="image-genre">
 		<div class="image">
-			<img src={hold_your_colour} alt="" />
+			<img
+				id="album_cover"
+				src={album_cover}
+				alt="Album cover"
+			/>
 		</div>
 		<div class="genre">
 			<ul>
 				{#each genres as genre}
 					<li class="genre-name">
-						<a href="#"
-							>{JSON.stringify(genre.genre_name)}
+						<a href="{base}/home/genre/{genre.id}"
+							>{genre.genre_name}
 						</a>
 					</li>
 				{/each}
@@ -39,13 +72,18 @@
 		</div>
 	</div>
 	<div class="header-songs">
-		<div class="header" />
+		<div class="header">
+			<h1>
+				{album.album_name}
+				<span>({album.year_of_release})</span>
+			</h1>
+		</div>
 		<div class="songs">
 			<div class="square-plus-flex">
 				<form
+					class="flex-genre-track-buttons"
 					action=""
 					method="post"
-					class="flex-genre-track-buttons"
 				>
 					<div class="add-genre-track-flex">
 						<button type="submit" class="btn">
@@ -77,6 +115,21 @@
 							type="text"
 						/>
 					</div>
+					<input
+						class="hidden"
+						name="album_cover"
+						id="file-to-upload"
+						type="file"
+						accept=".png,.jpg"
+						bind:files
+						bind:this={fileInput}
+						on:change={() => getBase64(files[0])}
+					/>
+					<button
+						class="upload-btn"
+						on:click={() => fileInput.click()}
+						>Upload</button
+					>
 				</form>
 			</div>
 			<div class="song-list">
@@ -94,6 +147,26 @@
 </div>
 
 <style>
+	.hidden {
+		display: none;
+	}
+
+	.upload-btn {
+		width: 128px;
+		height: 32px;
+		background-color: black;
+		font-family: sans-serif;
+		color: white;
+		font-weight: bold;
+		border: none;
+	}
+
+	.upload-btn:hover {
+		background-color: white;
+		color: black;
+		outline: black solid 2px;
+	}
+
 	.btn {
 		border: none;
 		padding: 0;
@@ -131,12 +204,6 @@
 		padding: 1rem;
 	}
 
-	.genre {
-		background-color: lime;
-		width: 55rem;
-		height: 10rem;
-	}
-
 	.header-songs {
 		margin-top: 2.5rem;
 		background-color: yellow;
@@ -147,7 +214,23 @@
 	.header {
 		background-color: green;
 		width: 55rem;
-		height: 7rem;
+		height: auto;
+
+		display: flex;
+		align-items: center;
+	}
+
+	.header h1 {
+		font-size: 2.6rem;
+		color: green;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		padding-left: 1rem;
+	}
+
+	.header span {
+		margin-left: 0.1em;
+		color: black;
 	}
 
 	.songs {
@@ -234,9 +317,7 @@
 	.genre {
 		background-color: lime;
 		width: 55rem;
-		height: 10rem;
-
-		height: 10%;
+		height: auto;
 
 		background-color: green;
 		display: flex;
@@ -245,21 +326,19 @@
 
 	.genre li {
 		margin: 1rem;
-		padding: 4px;
+		padding: 0.5rem 0.75rem;
 		font-weight: bold;
 		border: 2px solid orange;
-		border-radius: 25px;
+		border-radius: 0.8em;
 
 		display: inline-block;
 	}
 
 	.genre li a {
 		font-size: 14px;
-		color: orange;
 		text-decoration: none;
 	}
 	.genre li a:hover {
-		color: yellow;
 		text-decoration: underline;
 	}
 </style>
