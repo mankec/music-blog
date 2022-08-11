@@ -1,7 +1,7 @@
 <script lang="ts">
+	let avatar: any
 	let fileInput: any
 	let files: any
-	let avatar: any
 
 	function getBase64(image: any) {
 		const reader = new FileReader()
@@ -14,16 +14,16 @@
 
 	async function uploadFunction(imgBase64: any) {
 		const data: any = {}
-		const imgData: any = imgBase64.split(',')
+		const imgData = imgBase64.split(',')
 		data['image'] = imgData[1]
-		console.log(data)
-		await fetch(`/upload`, {
+
+		await fetch(`/mb`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Accept: 'application/json'
 			},
-			body: data
+			body: JSON.stringify(data)
 		})
 	}
 </script>
@@ -32,7 +32,11 @@
 	{#if avatar}
 		<img id="avatar" src={avatar} alt="avatar" />
 	{:else}
-		<img id="avatar" src="avatar.png" alt="avatar" />
+		<img
+			id="avatar"
+			src="avatar.png"
+			alt="hold_your_colour"
+		/>
 	{/if}
 	<input
 		class="hidden"
@@ -49,15 +53,6 @@
 	>
 </div>
 
-<!-- <div class="container">
-    {#if avatar}
-    <img id="avatar" src={avatar} alt="avatar"/>
-    {:else}
-    <img id="avatar" src={`avatar.png`} alt="avatar"/>
-    {/if}
-    <input class="hidden" id="file-to-upload" type="file" accept=".png,.jpg" bind:files bind:this={fileInput}/>
-    <button class="upload-btn" on:click={()=>{fileInput.click();}}>Upload</button>
-</div> -->
 <style>
 	.container {
 		display: flex;

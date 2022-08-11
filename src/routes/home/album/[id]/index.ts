@@ -1,22 +1,23 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
 import { writeFileSync } from 'fs'
+import { readFileSync } from 'fs'
 
 export const post: RequestHandler = async ({
 	request,
-	params
+	params,
+	url,
+	routeId
 }) => {
+	//prettier-ignore
+	// request.body is ReadableStream
+
+	console.log('Wrong endpoint')
+
 	const form = await request.formData()
-	console.log(request)
-	console.log(form)
+
 	let genre_name: any = String(form.get('genre_name'))
 	let track_name: any = String(form.get('track_name'))
-	// const data = JSON.parse(
-	// 	(await request.body.read()).toString()
-	// )
-	// console.log(data)
-	// const file = data['image']
-	// writeFileSync(`static/avatar.png`, file, 'base64')
 
 	//	prettier-ignore
 	if (genre_name === 'null' || genre_name === null || genre_name.trim() === '')
@@ -60,6 +61,59 @@ export const post: RequestHandler = async ({
 				}
 			}
 		})
+
+	//prettier-ignore
+	// const data: any = JSON.stringify((await request.body?.getReader().read()))
+	// const parse_data = JSON.parse(data)
+	// console.log(data)
+	// console.log(parse_data)
+	// const file = data['image']
+	// console.log(file)
+	// writeFileSync(
+	// 	`static/images/hold_your_colour.png`,
+	// 	file,
+	// 	'base64'
+	// )
+
+	// function readStream() {
+	// 	const reader = request.body?.getReader()!
+
+	// 	// read() returns a promise that resolves
+	// 	// when a value has been received
+	// 	reader
+	// 		.read()
+	// 		.then(function processText({ done, value }: any) {
+	// 			// Result objects contain two properties:
+	// 			// done  - true if the stream has already given you all its data.
+	// 			// value - some data. Always undefined when done is true.
+	// 			console.log(reader)
+	// 			console.log(value)
+	// 			console.log(JSON.stringify(value))
+
+	// 			// const file: string = data.data.join('') as string
+	// 			// console.log(file)
+	// 			// writeFileSync(
+	// 			// 	`static/images/avatar.png`,
+	// 			// 	file,
+	// 			// 	'base64'
+	// 			// )
+	// 			console.log(
+	// 				readFileSync('static/images/avatar.png', 'base64')
+	// 			)
+	// 			console.log(done)
+	// 			done = true
+	// 			console.log(done)
+	// 			if (done) {
+	// 				console.log('Stream complete')
+	// 				// reader.cancel().then(function msg() {
+	// 				// 	console.log(request.body)
+	// 				// })
+	// 				return
+	// 			}
+	// 		})
+	// }
+
+	// readStream()
 
 	return {}
 }

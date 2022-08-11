@@ -21,43 +21,58 @@
 
 	export let genre_name = ''
 	export let track_name = ''
-	let album_cover = ''
+	let avatar: any
 	let fileInput: any
 	let files: any
 
-	function getBase64(image: any) {
-		const reader: any = new FileReader()
+	// function getBase64(image: Blob) {
+	// 	const reader = new FileReader()
+	// 	reader.readAsDataURL(image)
+	// 	reader.onload = (e: any) => {
+	// 		avatar = e.target.result
+	// 		uploadFunction(e.target.result)
+	// 	}
+	// }
+
+	// async function uploadFunction(imgBase64: string) {
+	// 	const data: any = {}
+	// 	const imgData: string[] = imgBase64.split(',')
+	// 	data['image' as string] = imgData[1]
+	// 	console.log(data)
+	// 	await fetch(`/api`, {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 			Accept: 'application/json'
+	// 		},
+	// 		body: JSON.stringify(data)
+	// 	})
+	// }
+
+	let fileinput: any
+
+	const onFileSelected = (e: any) => {
+		let image = e.target.files[0]
+		let reader = new FileReader()
 		reader.readAsDataURL(image)
 		reader.onload = (e: any) => {
-			album_cover = e.target.result
-			uploadFunction(e.target.result)
+			avatar = e.target.result
 		}
-	}
-
-	async function uploadFunction(imgBase64) {
-		const data = {}
-		const imgData = imgBase64.split(',')
-		data['image'] = imgData[1]
-		console.log(data)
-		await fetch(`/upload`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify(data)
-		})
 	}
 </script>
 
 <div class="container">
 	<div class="image-genre">
 		<div class="image">
-			<img
-				id="album_cover"
-				src={album_cover}
-				alt="Album cover"
-			/>
+			{#if avatar}
+				<img id="" src={album.cover_img} alt="avatar" />
+			{:else}
+				<img
+					id="avatar"
+					src="images/hold_your_colour.jpg"
+					alt="hold_your_colour"
+				/>
+			{/if}
 		</div>
 		<div class="genre">
 			<ul>
@@ -115,9 +130,8 @@
 							type="text"
 						/>
 					</div>
-					<input
+					<!-- <input
 						class="hidden"
-						name="album_cover"
 						id="file-to-upload"
 						type="file"
 						accept=".png,.jpg"
@@ -129,7 +143,7 @@
 						class="upload-btn"
 						on:click={() => fileInput.click()}
 						>Upload</button
-					>
+					> -->
 				</form>
 			</div>
 			<div class="song-list">
@@ -146,7 +160,63 @@
 	</div>
 </div>
 
+<div id="app">
+	<h1>Upload Image</h1>
+
+	{#if avatar}
+		<img class="avatar" src={avatar} alt="d" />
+	{:else}
+		<img
+			class="avatar"
+			src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"
+			alt=""
+		/>
+	{/if}
+	<img
+		class="upload"
+		src="https://static.thenounproject.com/png/625182-200.png"
+		alt=""
+		on:click={() => {
+			fileinput.click()
+		}}
+	/>
+	<div
+		class="chan"
+		on:click={() => {
+			fileinput.click()
+		}}
+	>
+		Choose Image
+	</div>
+	<input
+		style="display:none"
+		type="file"
+		accept=".jpg, .jpeg, .png"
+		on:change={(e) => onFileSelected(e)}
+		bind:this={fileinput}
+	/>
+</div>
+
 <style>
+	#app {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-flow: column;
+	}
+
+	.upload {
+		display: flex;
+		height: 50px;
+		width: 50px;
+		cursor: pointer;
+	}
+	.avatar {
+		display: flex;
+		height: 200px;
+		width: 200px;
+	}
+
 	.hidden {
 		display: none;
 	}
