@@ -8,31 +8,33 @@
 	export let albums: AlbumType[] = []
 </script>
 
-<div class="container">
+<div class="container flex-between">
 	<div class="header">
 		<h1>{artist.artist_name}</h1>
-		<i class="fas fa-regular fa-album-collection" />
-	</div>
-	<div class="artists-add-artist">
 		<div class="artists">
 			<ul>
 				{#each albums as album}
 					<li>
 						<!-- prettier-ignore -->
 						<a href="{base}/home/album/{album.id}">
-							<h2>{album.album_name}<span>({album.year_of_release})</span></h2></a
-						>
+              <h2>{album.album_name}<span>({album.year_of_release})</span></h2></a
+            >
 					</li>
 				{/each}
 			</ul>
 		</div>
-		<div class="add-artist">
-			<AddAlbum {artist} />
-		</div>
+	</div>
+	<div class="add-artist">
+		<AddAlbum {artist} />
 	</div>
 </div>
 
 <style>
+	.flex-between {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.container {
 		width: 68%;
 		height: 100%;
@@ -45,78 +47,52 @@
 		height: auto;
 		/* background-color: blue; */
 
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
+		align-self: flex-start;
 	}
 
 	.header h1 {
-		font-size: 3.2rem;
-		margin-top: 2rem;
+		margin-top: 0.6rem;
 		padding-bottom: 0.1rem;
-		border-bottom: 3px solid lime;
-	}
+		padding-right: 0.8rem;
+		font-size: 3.2rem;
+		border-bottom: 3px solid #66a80f;
 
-	.fa-album-collection {
-		font-size: 1.5em;
-		color: greenyellow;
-		margin-top: 2rem;
-		margin-left: 1px;
-		transform: translateY(-57%);
-	}
-
-	.artists-add-artist {
-		height: 100%;
-		display: flex;
+		display: inline-block;
 	}
 
 	.artists {
-		width: 50%;
+		width: 100%;
 		height: 100%;
-		/* background-color: blue; */
 	}
 
 	.artists ul {
-		margin-top: 2.5rem;
+		margin-top: 4.2rem;
 		margin-right: 2.5rem;
 		list-style-type: none;
 	}
 
 	.artists li {
-		margin-bottom: 1rem;
+		margin-bottom: 1.4rem;
 		display: flex;
 		justify-content: flex-start;
-	}
-
-	.artists h2 {
-		padding-top: 1.2rem;
-		padding-bottom: 1.2rem;
-		padding-left: 1.2rem;
-		font-size: 2.4rem;
-
-		display: inline-block;
-	}
-
-	.artists span {
-		margin-left: 0.1em;
-		color: black;
-	}
-
-	.artists a {
-		width: 100%;
-		height: auto;
-		text-decoration: none;
-		color: red;
-		/* background-color: yellow; */
-		transition-timing-function: ease-in-out;
-		transition-duration: 0.6s;
-
-		display: flex;
 		align-items: center;
 	}
 
+	.artists h2 {
+		font-size: 2.4rem;
+	}
+
 	.artists a:hover {
-		/* background-color: rgba(255, 255, 0, 0.836); */
+		text-decoration: underline;
+	}
+
+	.artists a {
+		height: auto;
+		text-decoration: none;
+		color: #ced4da;
+		/* background-color: yellow; */
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.6s;
 	}
 
 	.add-artist {

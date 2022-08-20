@@ -136,11 +136,11 @@
 	}
 
 	.albums-content-container {
+		margin-top: 1.25rem;
+		margin-right: 1.25rem;
 		height: 22rem;
-		margin-top: 2.5rem;
 		border: 4px solid white;
 		border-radius: 1.6em;
-		/* background-color: green; */
 
 		display: flex;
 		justify-content: center;

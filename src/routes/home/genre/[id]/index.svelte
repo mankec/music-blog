@@ -48,17 +48,18 @@
 	}
 
 	.genre-title h1 {
+		margin-top: 0.6rem;
+		padding-bottom: 0.1rem;
+		padding-right: 0.8rem;
 		font-size: 3.2rem;
-		color: green;
-		border-left: 4px solid blue;
-		padding-left: 0.4rem;
-		margin: 1.2rem 0;
+		border-bottom: 3px solid #66a80f;
 
 		display: inline-block;
 	}
 
 	a {
 		text-decoration: none;
+		color: #ced4da;
 	}
 
 	a:hover {
@@ -99,12 +100,12 @@
 	}
 
 	.album-container h2 {
-		font-size: 2rem;
-		text-align: center;
 		padding-top: 1.4rem;
 		padding-right: 1.5rem;
 		padding-bottom: 2.2rem;
 		padding-left: 1.5rem;
+		font-size: 2rem;
+		text-align: center;
 	}
 
 	.yol {
@@ -119,7 +120,7 @@
 	.yol-2 {
 		width: 50%;
 
-		/* background-color: yellow; */
+		background-color: #343a40;
 		border: 2.6px solid black;
 		border-radius: 0.5em;
 		transform: translateY(-60%);

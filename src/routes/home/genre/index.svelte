@@ -8,14 +8,12 @@
 <div class="container">
 	<div class="header">
 		<h1>Genres</h1>
-		<i class="fas fa-regular fa-album-collection" />
 	</div>
 	<div class="artists-add-artist">
 		<div class="artists">
 			<ul>
 				{#each genres as genre}
 					<li>
-						<!-- prettier-ignore -->
 						<a href="{base}/home/genre/{genre.id}">
 							<h2>{genre.genre_name}</h2></a
 						>
@@ -45,18 +43,13 @@
 	}
 
 	.header h1 {
-		font-size: 3.2rem;
-		margin-top: 2rem;
+		margin-top: 0.6rem;
 		padding-bottom: 0.1rem;
-		border-bottom: 3px solid lime;
-	}
+		padding-right: 0.8rem;
+		font-size: 3.2rem;
+		border-bottom: 3px solid #66a80f;
 
-	.fa-album-collection {
-		font-size: 1.5em;
-		color: greenyellow;
-		margin-top: 2rem;
-		margin-left: 1px;
-		transform: translateY(-57%);
+		display: inline-block;
 	}
 
 	.artists-add-artist {
@@ -67,47 +60,37 @@
 	.artists {
 		width: 100%;
 		height: 100%;
-		/* background-color: blue; */
 	}
 
 	.artists ul {
-		margin-top: 2.5rem;
+		margin-top: 4.2rem;
+		margin-right: 2.5rem;
 		list-style-type: none;
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 
 	.artists li {
-		display: flex;
-		justify-content: flex-start;
+		margin-bottom: 0.8rem;
+		margin-right: 1.6rem;
 	}
 
 	.artists h2 {
-		padding-top: 1.2rem;
-		padding-bottom: 1.2rem;
-		padding-left: 1.2rem;
 		font-size: 2.4rem;
 	}
 
+	.artists a:hover {
+		text-decoration: underline;
+	}
+
 	.artists a {
-		width: 100%;
 		height: auto;
 		text-decoration: none;
-		color: red;
+		color: #ced4da;
 		/* background-color: yellow; */
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.6s;
-
-		display: flex;
-		align-items: center;
-	}
-
-	.artists a:hover {
-		/* background-color: rgba(255, 255, 0, 0.836); */
-	}
-
-	.add-artist {
-		width: 40%;
-		height: 100%;
-		margin: 0 auto;
-		/* background-color: blue; */
 	}
 </style>

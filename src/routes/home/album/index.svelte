@@ -85,6 +85,7 @@
 		font-size: 2.2rem;
 		color: black;
 	}
+
 	.artists a:hover {
 		text-decoration: underline;
 	}

@@ -59,9 +59,11 @@
 		justify-content: space-between;
 	}
 
-	.flex-center {
-		display: flex;
-		align-items: center;
+	.add-artist {
+		width: 40%;
+		height: 100%;
+
+		align-self: flex-start;
 	}
 
 	.container {
@@ -82,17 +84,13 @@
 		border-bottom: 3px solid lime;
 	}
 
-	.add-artist {
-		width: 40%;
-		height: 100%;
-	}
-
 	.genre-list {
 		margin-top: 2rem;
 		list-style: none;
 
 		display: flex;
 		justify-content: flex-start;
+		flex-wrap: wrap;
 	}
 
 	.genre-list li {
