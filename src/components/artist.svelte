@@ -39,16 +39,12 @@
 		aspect-ratio: 1 / 1;
 		width: 26%;
 		border-radius: 0 2vmin 2vmin 0;
-
-		background-color: red;
 	}
 	.band-desc h2 {
 		margin-top: 0.75rem;
 		margin-bottom: 1rem;
 		padding-left: 1.75rem;
 		display: inline-block;
-
-		border-bottom: 2px solid red;
 	}
 	.band-desc p {
 		padding-left: 3rem;

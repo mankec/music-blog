@@ -2,17 +2,12 @@ import type { RequestHandler } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
 import { writeFileSync } from 'fs'
 import { readFileSync } from 'fs'
+import { promises as fs } from 'fs'
 
 export const post: RequestHandler = async ({
 	request,
-	params,
-	url,
-	routeId
+	params
 }) => {
-	//prettier-ignore
-	// request.body is ReadableStream
-
-	console.log('Wrong endpoint')
 
 	const form = await request.formData()
 
@@ -21,12 +16,12 @@ export const post: RequestHandler = async ({
 
 	//	prettier-ignore
 	if (genre_name === 'null' || genre_name === null || genre_name.trim() === '')
-		genre_name = ''
-	else genre_name = genre_name.trim()
+    genre_name = ''
+  else genre_name = genre_name.trim()
 	//	prettier-ignore
 	if (track_name === 'null' || track_name === null || track_name.trim() === '')
-		track_name = ''
-	else track_name = track_name.trim()
+    track_name = ''
+  else track_name = track_name.trim()
 
 	const genre_name_check = await prisma.genre.findUnique({
 		where: { genre_name: genre_name }
@@ -52,7 +47,7 @@ export const post: RequestHandler = async ({
 		})
 	}
 
-	if (track_name !== '')
+	if (track_name !== '') {
 		await prisma.track.create({
 			data: {
 				track_name,
@@ -61,59 +56,9 @@ export const post: RequestHandler = async ({
 				}
 			}
 		})
+	}
 
-	//prettier-ignore
-	// const data: any = JSON.stringify((await request.body?.getReader().read()))
-	// const parse_data = JSON.parse(data)
-	// console.log(data)
-	// console.log(parse_data)
-	// const file = data['image']
-	// console.log(file)
-	// writeFileSync(
-	// 	`static/images/hold_your_colour.png`,
-	// 	file,
-	// 	'base64'
-	// )
 
-	// function readStream() {
-	// 	const reader = request.body?.getReader()!
-
-	// 	// read() returns a promise that resolves
-	// 	// when a value has been received
-	// 	reader
-	// 		.read()
-	// 		.then(function processText({ done, value }: any) {
-	// 			// Result objects contain two properties:
-	// 			// done  - true if the stream has already given you all its data.
-	// 			// value - some data. Always undefined when done is true.
-	// 			console.log(reader)
-	// 			console.log(value)
-	// 			console.log(JSON.stringify(value))
-
-	// 			// const file: string = data.data.join('') as string
-	// 			// console.log(file)
-	// 			// writeFileSync(
-	// 			// 	`static/images/avatar.png`,
-	// 			// 	file,
-	// 			// 	'base64'
-	// 			// )
-	// 			console.log(
-	// 				readFileSync('static/images/avatar.png', 'base64')
-	// 			)
-	// 			console.log(done)
-	// 			done = true
-	// 			console.log(done)
-	// 			if (done) {
-	// 				console.log('Stream complete')
-	// 				// reader.cancel().then(function msg() {
-	// 				// 	console.log(request.body)
-	// 				// })
-	// 				return
-	// 			}
-	// 		})
-	// }
-
-	// readStream()
 
 	return {}
 }

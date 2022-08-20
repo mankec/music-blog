@@ -25,7 +25,6 @@
 		width: 75%;
 		height: 100vh;
 		margin: 0 auto;
-		background-color: green;
 
 		display: flex;
 	}
@@ -39,7 +38,7 @@
 		text-decoration: none;
 		width: 33.33%;
 		height: 100%;
-		background-color: red;
+		background-color: #5c940d;
 
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.6s;
@@ -51,6 +50,6 @@
 
 	a:hover {
 		color: white;
-		background-color: rgba(255, 0, 0, 0.85);
+		background-color: #66a80f;
 	}
 </style>

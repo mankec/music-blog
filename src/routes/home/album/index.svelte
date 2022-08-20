@@ -18,8 +18,8 @@
 					<li>
 						<!-- prettier-ignore -->
 						<a href="{base}/home/album/{album.id}">
-							<h2>{album.album_name}<span>({album.year_of_release})</span></h2></a
-						>
+							<h2>{album.album_name}</h2></a
+						><span>({album.year_of_release})</span>
 					</li>
 				{/each}
 			</ul>
@@ -32,7 +32,7 @@
 		width: 68%;
 		height: 100%;
 		margin: 0 auto;
-		background-color: blue;
+		/* background-color: blue; */
 	}
 
 	.header {
@@ -49,15 +49,8 @@
 		font-size: 3.2rem;
 		margin-top: 2rem;
 		padding-bottom: 0.1rem;
-		border-bottom: 3px solid lime;
-	}
-
-	.fa-album-collection {
-		font-size: 1.5em;
-		color: greenyellow;
-		margin-top: 2rem;
-		margin-left: 1px;
-		transform: translateY(-57%);
+		padding-right: 0.8rem;
+		border-bottom: 3px solid #66a80f;
 	}
 
 	.artists-add-artist {
@@ -71,52 +64,37 @@
 	}
 
 	.artists ul {
-		margin-top: 2.5rem;
+		margin-top: 4.2rem;
 		margin-right: 2.5rem;
 		list-style-type: none;
 	}
 
 	.artists li {
-		margin-bottom: 1rem;
+		margin-bottom: 1.4rem;
 		display: flex;
 		justify-content: flex-start;
-	}
-
-	.artists h2 {
-		padding-top: 1.2rem;
-		padding-bottom: 1.2rem;
-		padding-left: 1.2rem;
-		font-size: 2.4rem;
-
-		display: inline-block;
-	}
-
-	.artists span {
-		margin-left: 0.1em;
-		color: black;
-	}
-
-	.artists a {
-		width: 100%;
-		height: auto;
-		text-decoration: none;
-		color: red;
-		background-color: yellow;
-		transition-timing-function: ease-in-out;
-		transition-duration: 0.6s;
-
-		display: flex;
 		align-items: center;
 	}
 
-	.artists a:hover {
-		background-color: rgba(255, 255, 0, 0.836);
+	.artists h2 {
+		font-size: 2.4rem;
 	}
 
-	.add-artist {
-		width: 40%;
-		height: 100%;
-		margin: 0 auto;
-		/* background-color: blue; */
+	.artists span {
+		margin-left: 0.2em;
+		font-size: 2.2rem;
+		color: black;
+	}
+	.artists a:hover {
+		text-decoration: underline;
+	}
+
+	.artists a {
+		height: auto;
+		text-decoration: none;
+		color: #ced4da;
+		/* background-color: yellow; */
+		transition-timing-function: ease-in-out;
+		transition-duration: 0.6s;
 	}
 </style>

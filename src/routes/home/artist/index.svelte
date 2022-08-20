@@ -34,7 +34,7 @@
 		width: 68%;
 		height: 100%;
 		margin: 0 auto;
-		background-color: blue;
+		/* background-color: blue; */
 	}
 
 	.header {
@@ -51,15 +51,16 @@
 		font-size: 3.2rem;
 		margin-top: 2rem;
 		padding-bottom: 0.1rem;
-		border-bottom: 3px solid lime;
+		padding-right: 0.8rem;
+		border-bottom: 3px solid #66a80f;
 	}
 
 	.fa-music {
 		font-size: 1.5em;
-		color: greenyellow;
+		color: #a9e34b;
 		margin-top: 2rem;
 		margin-left: 1px;
-		transform: translateY(-57%);
+		transform: translate(-50%, -57%);
 	}
 
 	.artists-add-artist {
@@ -101,7 +102,7 @@
 		margin-right: 6rem;
 		text-decoration: none;
 		color: red;
-		background-color: yellow;
+		/* background-color: yellow; */
 		border-radius: 0.8em;
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.6s;
@@ -112,7 +113,7 @@
 	}
 
 	.artists a:hover {
-		background-color: rgba(255, 255, 0, 0.836);
+		/* background-color: rgba(255, 255, 0, 0.836); */
 	}
 
 	.add-artist {

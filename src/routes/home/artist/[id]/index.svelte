@@ -27,7 +27,7 @@
 			</ul>
 		</div>
 		<div class="add-artist">
-			<AddAlbum />
+			<AddAlbum {artist} />
 		</div>
 	</div>
 </div>
@@ -37,7 +37,7 @@
 		width: 68%;
 		height: 100%;
 		margin: 0 auto;
-		background-color: blue;
+		/* background-color: blue; */
 	}
 
 	.header {
@@ -107,7 +107,7 @@
 		height: auto;
 		text-decoration: none;
 		color: red;
-		background-color: yellow;
+		/* background-color: yellow; */
 		transition-timing-function: ease-in-out;
 		transition-duration: 0.6s;
 
@@ -116,7 +116,7 @@
 	}
 
 	.artists a:hover {
-		background-color: rgba(255, 255, 0, 0.836);
+		/* background-color: rgba(255, 255, 0, 0.836); */
 	}
 
 	.add-artist {

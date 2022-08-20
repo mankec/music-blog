@@ -44,7 +44,7 @@
 
 	.genre-title {
 		margin-bottom: 3.6rem;
-		background-color: yellow;
+		/* background-color: yellow; */
 	}
 
 	.genre-title h1 {
@@ -66,7 +66,7 @@
 	}
 
 	.main-container {
-		background-color: gray;
+		/* background-color: gray; */
 
 		overflow: hidden;
 		width: 84%;
@@ -74,7 +74,7 @@
 	}
 
 	.container {
-		background-color: red;
+		/* background-color: red; */
 		height: 100vh;
 		margin: 0 auto;
 		width: 75%;
@@ -88,7 +88,7 @@
 	.album-container {
 		width: auto;
 
-		background-color: green;
+		/* background-color: green; */
 		border: 3px solid black;
 		border-radius: 0.6em;
 
@@ -119,7 +119,7 @@
 	.yol-2 {
 		width: 50%;
 
-		background-color: yellow;
+		/* background-color: yellow; */
 		border: 2.6px solid black;
 		border-radius: 0.5em;
 		transform: translateY(-60%);

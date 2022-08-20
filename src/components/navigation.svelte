@@ -21,7 +21,7 @@
 	.navbar {
 		width: 16%;
 		height: 100%;
-		background-color: #1a1a1a;
+		background-color: #212529;
 
 		position: fixed;
 		top: 0;

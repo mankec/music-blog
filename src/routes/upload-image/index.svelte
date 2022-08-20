@@ -17,7 +17,7 @@
 		const imgData = imgBase64.split(',')
 		data['image'] = imgData[1]
 
-		await fetch(`/mb`, {
+		await fetch(`/mb/upload-image`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -26,6 +26,8 @@
 			body: JSON.stringify(data)
 		})
 	}
+
+	console.log(avatar)
 </script>
 
 <div class="container">

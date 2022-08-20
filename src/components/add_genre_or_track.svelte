@@ -1,30 +1,40 @@
 <script lang="ts">
 	import { enhance } from '$lib/form'
 
-	let artist_name = ''
+	let genre_name = ''
+	let track_name = ''
 </script>
 
 <div class="albums-content-container">
-	<form
-		class="form"
-		action=""
-		method="post"
-		autocomplete="off"
-		use:enhance
-	>
-		<label for="add-artist">Add artist</label>
+	<form class="form" action="" method="post" use:enhance>
+		<label for="add-genre-or-track"
+			>Add some genres or tracks</label
+		>
 		<div class="add-genre-track-flex">
-			<input
-				class="add-genre-track-input"
-				aria-label="Add track names"
-				bind:value={artist_name}
-				name="artist_name"
-				placeholder="The Doors"
-				type="text"
-			/>
 			<button type="submit" class="btn">
 				<i class="fas fa-regular fa-square-plus" /></button
 			>
+			<input
+				class="add-genre-track-input"
+				aria-label="Add genre"
+				bind:value={genre_name}
+				name="genre_name"
+				placeholder="Add genre"
+				type="text"
+			/>
+		</div>
+		<div class="add-genre-track-flex">
+			<button type="submit" class="btn">
+				<i class="fas fa-regular fa-square-plus" /></button
+			>
+			<input
+				class="add-genre-track-input"
+				aria-label="Add genre"
+				bind:value={track_name}
+				name="track_name"
+				placeholder="Add a song"
+				type="text"
+			/>
 		</div>
 	</form>
 </div>
@@ -39,9 +49,10 @@
 	}
 
 	.albums-content-container {
+		margin-top: 1.25rem;
+		margin-right: 1.25rem;
 		height: 22rem;
-		margin-top: 2.5rem;
-		border: 2px solid #82c91e;
+		border: 4px solid white;
 		border-radius: 1.6em;
 		/* background-color: green; */
 
@@ -71,7 +82,7 @@
 		border-radius: 0.6em;
 	}
 	.fa-square-plus {
-		color: #82c91e;
+		color: greenyellow;
 		font-size: 2.9em;
 		height: 100%;
 	}
@@ -90,6 +101,6 @@
 	}
 
 	input:focus {
-		outline: 2px solid #ccc;
+		outline: 1px solid lime;
 	}
 </style>
