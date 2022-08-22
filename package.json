@@ -13,12 +13,13 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"netlify-build": "npx prisma migrate deploy"
+		"vercel-build": "npx prisma migrate deploy && npm run build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/adapter-netlify": "^1.0.0-next.71",
 		"@sveltejs/adapter-node": "^1.0.0-next.86",
+		"@sveltejs/adapter-vercel": "next",
 		"@sveltejs/kit": "^1.0.0-next.428",
 		"@types/bcrypt": "^5.0.0",
 		"@types/cookie": "^0.5.1",
