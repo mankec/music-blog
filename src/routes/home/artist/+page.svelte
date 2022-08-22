@@ -52,7 +52,7 @@
 	}
 
 	.header h1 {
-		margin-top: 0.6rem;
+		margin-top: 1rem;
 		padding-bottom: 0.1rem;
 		padding-right: 0.8rem;
 		font-size: 3.2rem;

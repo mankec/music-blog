@@ -49,7 +49,7 @@
 
 	.header h1 {
 		font-size: 3.2rem;
-		margin-top: 2rem;
+		margin-top: 1rem;
 		padding-bottom: 0.1rem;
 		padding-right: 0.8rem;
 		border-bottom: 3px solid #66a80f;

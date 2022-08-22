@@ -3,7 +3,6 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"predev": "npx prisma migrate dev",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",

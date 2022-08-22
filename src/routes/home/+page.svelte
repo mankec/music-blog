@@ -36,7 +36,7 @@
 
 	a {
 		text-decoration: none;
-		width: 33.33%;
+		width: 31.8%;
 		height: 100%;
 		background-color: #5c940d;
 

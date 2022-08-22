@@ -37,7 +37,7 @@ export async function POST({ request }: any) {
 
 
 export async function load({ data }: any) {
-  console.log('GET')
+
 
   const artists = await prisma.artist.findMany()
 
