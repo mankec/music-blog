@@ -1,8 +1,6 @@
 // import adapter from '@sveltejs/adapter-auto'
-import node from "@sveltejs/adapter-node";
-
 import preprocess from 'svelte-preprocess'
-// import adapter from '@sveltejs/adapter-netlify';
+import adapter from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +9,16 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: node({ env: { port: process.env.PORT } }),
+    adapter: adapter({
+      // if true, will create a Netlify Edge Function rather
+      // than using standard Node-based functions
+      edge: false,
+
+      // if true, will split your app into multiple functions
+      // instead of creating a single one for the entire app.
+      // if `edge` is true, this option cannot be used
+      split: false
+    }),
     paths: {
       base: ''
     }

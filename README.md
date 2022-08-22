@@ -52,3 +52,10 @@ Netlify
 command = "npm run build"
 publish = "build/"
 functions = "functions/"
+
+    "engines": {
+    	"npm": "8.12.1",
+    	"node": "18.4.0"
+    }
+
+"start": "node build/index.js",

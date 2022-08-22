@@ -1,8 +1,4 @@
 {
-	"engines": {
-		"npm": "8.12.1",
-		"node": "18.4.0"
-	},
 	"name": "music-blog",
 	"version": "0.0.1",
 	"type": "module",
@@ -10,7 +6,6 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
-		"start": "node build/index.js",
 		"preview": "vite preview",
 		"postinstall": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
