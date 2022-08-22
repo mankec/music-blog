@@ -20,7 +20,7 @@ const config = {
       split: false
     }),
     paths: {
-      base: ''
+      base: '/mb'
     }
   }
 }
