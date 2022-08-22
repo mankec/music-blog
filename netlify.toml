@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "build/"
   functions = "functions/"
-  base = "mb/"
+  
 
 [[plugins]]
 package = 'netlify-plugin-prisma-provider'
