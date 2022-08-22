@@ -3,6 +3,9 @@
   publish = "build/"
   functions = "functions/"
   
+[context.deploy-preview.environment]
+  command = "npx prisma migrate deploy"
+  
 
 [[plugins]]
 package = 'netlify-plugin-prisma-provider'

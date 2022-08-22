@@ -13,7 +13,7 @@
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"netlify-build": "npx prisma generate"
+		"netlify-build": "npx prisma migrate deploy"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
