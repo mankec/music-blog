@@ -3,7 +3,7 @@
   publish = "build/"
   functions = "functions/"
   
-[context.deploy-preview.environment]
+[context.production]  
   command = "npx prisma migrate deploy"
   
 
