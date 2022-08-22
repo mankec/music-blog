@@ -8,4 +8,4 @@
 package = 'netlify-plugin-prisma-provider'
   [plugins.inputs]
   path = 'prisma/schema.prisma'
-  DATABASE_PROVIDER = 'postgresql'
+  varName = 'postgresql'
