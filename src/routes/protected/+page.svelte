@@ -1,28 +1,15 @@
-<script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit'
-	// import { base } from '$app/paths'
+<!-- <script lang="ts">
+	throw new Error(
+		'@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)'
+	)
+	// Suggestion (check code before using, and possibly convert to data.X access later):
+	// import type { PageData } from './$types';
+	// export let data: PageData;
+	// let ({ user } = data);
 
-	export const load: Load = ({ session }) => {
-		if (!session.user) {
-			return {
-				status: 302,
-				redirect: 'mb/home'
-			}
-		}
-
-		return {
-			status: 200,
-			props: {
-				user: session.user.username
-			}
-		}
-	}
-</script>
-
-<script lang="ts">
 	export let user: string
 </script>
 
 <h1>Protected</h1>
 
-<p>Welcome {user}!</p>
+<p>Welcome {user}!</p> -->

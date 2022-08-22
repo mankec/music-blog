@@ -28,6 +28,12 @@ sudo -u postgres psql db_name
 ```
 
 TODOS
+import { error } from '@sveltejs/kit'
+throw error(400, 'not found'); error helper from @sveltejs/kit
+export const load = async ({ params }) => {}
+
+import { redirect } from '@sveltejs/kit'
+throw redirect(307, '/login')
 
 Auth restrictions
 Progressive enhancement

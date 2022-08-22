@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import type { GenreType } from '$root/types'
+	import type { PageData } from '@sveltejs/kit/types/internal'
 
-	export let genres: GenreType[] = []
+	export let data: PageData
+	const genres = data.genres
 </script>
 
 <div class="container">

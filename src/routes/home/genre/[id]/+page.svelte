@@ -3,9 +3,11 @@
 
 	import type { GenreType } from '$root/types'
 	import type { AlbumType } from '$root/types'
+	import type { PageData } from '@sveltejs/kit/types/internal'
 
-	export let genre: GenreType
-	export let albums: AlbumType[] = []
+	export let data: PageData
+	const genre = data.genre
+	const albums = data.albums
 </script>
 
 <div class="main-container">

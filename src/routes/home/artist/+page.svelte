@@ -1,14 +1,23 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import AddArtist from '$root/components/add_artist.svelte'
+	import type { PageData } from '@sveltejs/kit/types/internal'
 	import type { ArtistType } from '$root/types'
+	// Suggestion (check code before using, and possibly convert to data.X access later):
 
-	export let artists: ArtistType[] = []
+	// export let data: PageData;
+	// $: ({ error } = data);
+
+	// export let artists: ArtistType[] = []
+
+	export let data: PageData
+	const artists = data.artists
 </script>
 
 <div class="container flex-between">
 	<div class="header">
 		<h1>Artists</h1>
+
 		<div class="artists">
 			<ul>
 				{#each artists as artist}

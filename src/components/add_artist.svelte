@@ -10,7 +10,6 @@
 		action=""
 		method="post"
 		autocomplete="off"
-		use:enhance
 	>
 		<label for="add-artist">Add artist</label>
 		<div class="add-genre-track-flex">

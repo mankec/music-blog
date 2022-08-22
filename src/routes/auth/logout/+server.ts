@@ -1,16 +1,16 @@
-import type { RequestHandler } from '@sveltejs/kit'
-import * as cookie from 'cookie'
+// import type { RequestHandler } from '@sveltejs/kit'
+// import * as cookie from 'cookie'
 
-export const get: RequestHandler = async () => {
-	return {
-		status: 303,
-		headers: {
-			'Set-Cookie': cookie.serialize('session', '', {
-				path: '/mb',
-				// the cookie should expire immediately
-				expires: new Date(0)
-			}),
-			location: '/mb'
-		}
-	}
-}
+// export const get: RequestHandler = async () => {
+// 	return {
+// 		status: 303,
+// 		headers: {
+// 			'Set-Cookie': cookie.serialize('session', '', {
+// 				path: '/mb',
+// 				// the cookie should expire immediately
+// 				expires: new Date(0)
+// 			}),
+// 			location: '/mb'
+// 		}
+// 	}
+// }

@@ -2,8 +2,10 @@
 	import { base } from '$app/paths'
 	import AddAlbum from '$root/components/add_album.svelte'
 	import type { AlbumType } from '$root/types'
+	import type { PageData } from '@sveltejs/kit/types/internal'
 
-	export let albums: AlbumType[] = []
+	export let data: PageData
+	const albums = data.albums
 </script>
 
 <div class="container">

@@ -1,14 +1,10 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
 
-export const post: RequestHandler = async ({
-  request,
-  params
-}) => {
+export async function POST({ request, params }: any) {
   console.log('FORM')
 
   const form = await request.formData()
-
 
   let album_name: any = String(form.get('album_name'))
   //prettier-ignore
@@ -75,11 +71,8 @@ export const post: RequestHandler = async ({
   return {}
 }
 
-export const get: RequestHandler = async ({
-  request,
-  params,
-  url
-}) => {
+
+export async function load({ params }: any) {
   const artist = await prisma.artist.findUnique({
     where: { id: params.id }
   })
@@ -102,9 +95,5 @@ export const get: RequestHandler = async ({
   // 	return { status: 400 }
   // }
 
-  return {
-    headers: { 'Content-Type': 'application/json' },
-    status: 200,
-    body: { artist, albums }
-  }
+  return { artist, albums }
 }

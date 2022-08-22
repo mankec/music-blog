@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths'
-	import { session } from '$app/stores'
 </script>
 
 <nav class="navbar">
@@ -10,7 +9,7 @@
 		<li><a href="{base}/home/album">Albums</a></li>
 		<li><a href="{base}/home/genre">Genres</a></li>
 
-		{#if !$session.user}
+		<!-- {#if !$session.user}
 			<li>
 				<a href="{base}/auth/login">Login</a>
 			</li>
@@ -20,7 +19,7 @@
 		{#if $session.user}
 			<li><a href="{base}/protected">Admin</a></li>
 			<li><a href="{base}/auth/logout">Log out</a></li>
-		{/if}
+		{/if} -->
 	</ul>
 </nav>
 

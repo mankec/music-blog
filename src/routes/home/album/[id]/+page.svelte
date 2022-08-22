@@ -1,22 +1,17 @@
 <script lang="ts">
-	import hold_your_colour from '$lib/assets/hold_your_colour.jpg'
 	import { base } from '$app/paths'
-	import { enhance } from '$lib/form'
-
-	import Album from '$root/components/album.svelte'
-	import GenreList from '$root/components/genre_list.svelte'
-	import TrackList from '$root/components/track_list.svelte'
 
 	import type { AlbumType } from '$root/types'
 	import type { GenreType } from '$root/types'
 	import type { TrackType } from '$root/types'
-	import Genre from '$root/components/genre.svelte'
-	import AddGenre from '$root/components/add_genre_or_track.svelte'
-	import AddGenreOrTrack from '$root/components/add_genre_or_track.svelte'
 
-	export let album: AlbumType
-	export let genres: GenreType[] = []
-	export let tracks: TrackType[] = []
+	import AddGenreOrTrack from '$root/components/add_genre_or_track.svelte'
+	import type { PageData } from '@sveltejs/kit/types/internal'
+
+	export let data: PageData
+	const album = data.album
+	const genres = data.genres
+	const tracks = data.tracks
 
 	export function index(tracks: any, track: any) {
 		return tracks.indexOf(track) + 1

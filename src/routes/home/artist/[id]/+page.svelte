@@ -3,9 +3,11 @@
 	import AddAlbum from '$root/components/add_album.svelte'
 	import type { AlbumType } from '$root/types'
 	import type { ArtistType } from '$root/types'
+	import type { PageData } from '@sveltejs/kit/types/internal'
 
-	export let artist: ArtistType
-	export let albums: AlbumType[] = []
+	export let data: PageData
+	const artist = data.artist
+	const albums = data.albums
 </script>
 
 <div class="container flex-between">

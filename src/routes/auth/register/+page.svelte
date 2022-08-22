@@ -1,19 +1,10 @@
-<script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit'
+<!-- <script lang="ts">
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+	// Suggestion (check code before using, and possibly convert to data.X access later):
+	// import type { PageData } from './$types';
+	// export let data: PageData;
+	// $: ({ error, success } = data);
 
-	export const load: Load = ({ session, props }) => {
-		if (session.user) {
-			return {
-				status: 302,
-				redirect: '/mb'
-			}
-		}
-
-		return { props }
-	}
-</script>
-
-<script lang="ts">
 	import { send } from '$lib/api'
 	import { base } from '$app/paths'
 
@@ -87,4 +78,4 @@
 	button {
 		cursor: pointer;
 	}
-</style>
+</style> -->
