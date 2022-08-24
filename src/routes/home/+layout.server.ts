@@ -5,7 +5,9 @@ import { redirect } from '@sveltejs/kit'
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load({ request }: any) {
-  const cookieHeader = request.headers.get('cookie')
+  let cookieHeader = request.headers.get('cookie')
+  if (!cookieHeader) cookieHeader = ''
+
   const cookies = cookie.parse(cookieHeader)
   const token = cookies.session
 
