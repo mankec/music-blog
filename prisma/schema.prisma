@@ -14,7 +14,6 @@ model User {
   username        String   @unique
   password_hash   String
   user_auth_token String   @unique @default(cuid())
-  //  email  String  @unique
   artists         Artist[]
 }
 

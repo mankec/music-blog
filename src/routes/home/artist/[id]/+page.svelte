@@ -1,13 +1,39 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import AddAlbum from '$root/components/add_album.svelte'
-	import type { AlbumType } from '$root/types'
-	import type { ArtistType } from '$root/types'
 	import type { PageData } from '@sveltejs/kit/types/internal'
 
 	export let data: PageData
 	const artist = data.artist
 	const albums = data.albums
+
+	let fileInput
+	let files
+	let avatar
+
+	function getBase64(image: any) {
+		const reader = new FileReader()
+		reader.readAsDataURL(image)
+		reader.onload = (e: any) => {
+			avatar = e.target.result
+			uploadFunction(e.target.result)
+		}
+	}
+
+	async function uploadFunction(imgBase64: any) {
+		const data: any = {}
+		const imgData = imgBase64.split(',')
+		data['image'] = imgData[1]
+		console.log(data)
+		await fetch(`/api`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+	}
 </script>
 
 <div class="container flex-between">
@@ -27,7 +53,7 @@
 		</div>
 	</div>
 	<div class="add-artist">
-		<AddAlbum {artist} />
+		<AddAlbum />
 	</div>
 </div>
 
@@ -57,6 +83,7 @@
 		padding-bottom: 0.1rem;
 		padding-right: 0.8rem;
 		font-size: 3.2rem;
+		color: #ced4da;
 		border-bottom: 3px solid #66a80f;
 
 		display: inline-block;

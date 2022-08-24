@@ -1,13 +1,11 @@
-import type { RequestEvent } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
+import { userInfo } from 'os'
 
 export async function POST({ request }: any) {
-  console.log('POST')
-  console.log(request)
-
-
   const form = await request.formData()
   let artist_name: any = String(form.get('artist_name'))
+
+  const user = await prisma.user.findFirst({})
 
   //	prettier-ignore
   if (artist_name === 'null' || artist_name === null || artist_name.trim() === '')
@@ -25,29 +23,38 @@ export async function POST({ request }: any) {
     }
   )
 
-  if (!artist_exists && artist_name !== '')
+  if (!artist_exists && artist_name !== '') {
     await prisma.artist.create({
       data: {
-        artist_name
-      }
+        artist_name,
+        users: {
+          connect: { id: user?.id }
+        }
+      },
+
     })
+
+  }
 
   return {}
 }
 
 
-export async function load({ data }: any) {
+export async function load() {
 
+  const user = await prisma.user.findFirst({})
 
-  const artists = await prisma.artist.findMany()
-
-  // if (!artists) {
-  //   return { status: 400 }
-  // }
-  // console.log(artists)
+  const artists = await prisma.artist.findMany({
+    where: {
+      users: {
+        some: {
+          id: user?.id
+        }
+      }
+    }
+  })
 
   return { artists }
-
 }
 
 

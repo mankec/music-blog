@@ -1,83 +1,6 @@
 <script lang="ts">
-	import type { ArtistType } from '$root/types'
-	import { enhance } from '$lib/form'
-	import axios from 'axios'
-
 	let album_name = ''
 	let year_of_release = ''
-	let album_cover = ''
-	let fileInput: any
-	let files: any
-	let avatar: any
-
-	export let artist: ArtistType
-
-	function getBase64(image: any) {
-		const reader = new FileReader()
-		const r = reader.readAsDataURL(image)
-		reader.onload = (e: any) => {
-			avatar = e.target.result
-			uploadFunction(e.target.result)
-			// sendJSON(e.target.result)
-		}
-	}
-
-	async function uploadFunction(imgBase64: any) {
-		const data: any = {}
-		const imgData = imgBase64.split(',')
-		data['image'] = imgData[1]
-		// console.log(data)
-		// console.log(JSON.stringify(data))
-		let string: any = imgData[1]
-		console.log(string.length)
-		axios({
-			method: 'post',
-			url: '/mb/api',
-			data: {
-				data
-			}
-			// transformRequest: [
-			// 	function (data) {
-			// 		const stream = Readable.from(data.toString())
-
-			// 		return stream
-			// 	}
-			// ]
-		})
-			.then(function (response) {
-				console.log(response)
-			})
-			.catch(function (error) {
-				console.log(error)
-			})
-	}
-
-	function sendJSON(image: any) {
-		// Creating a XHR object
-		let xhr = new XMLHttpRequest()
-		let url = '/mb/api'
-
-		// open a connection
-		xhr.open('POST', url, true)
-
-		// Set the request header i.e. which type of content you are sending
-		xhr.setRequestHeader('Content-Type', 'application/json')
-
-		// Create a state change callback
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				console.log('Sent data successfully')
-			}
-		}
-		const data_img: any = {}
-		const imgData = image.split(',')
-		data_img['image'] = imgData[1]
-		// Converting JSON data to string
-		var data = JSON.stringify({ data_img })
-
-		// Sending data with the request
-		xhr.send(data)
-	}
 </script>
 
 <div class="albums-content-container">
@@ -86,7 +9,6 @@
 		action=""
 		method="post"
 		autocomplete="off"
-		use:enhance
 	>
 		<label for="add-artist">Add album</label>
 		<div class="add-genre-track-flex">
@@ -111,25 +33,13 @@
 			>
 		</div>
 	</form>
-	<!-- <input
-		class="hidden"
-		id="file-to-upload"
-		type="file"
-		accept=".png,.jpg"
-		bind:files
-		bind:this={fileInput}
-		on:change={() => getBase64(files[0])}
-	/>
-	<button
-		class="upload-btn"
-		on:click={() => fileInput.click()}>Upload</button
-	> -->
 </div>
 
 <style>
 	label {
 		margin-bottom: 3rem;
 		font-size: 2.2rem;
+		color: #ced4da;
 		text-align: center;
 
 		display: block;
@@ -139,7 +49,7 @@
 		margin-top: 1.25rem;
 		margin-right: 1.25rem;
 		height: 22rem;
-		border: 4px solid white;
+		border: 4px solid #212529;
 		border-radius: 1.6em;
 
 		display: flex;
@@ -162,9 +72,9 @@
 		border: none;
 		width: 40%;
 		height: 100%;
-
+		background: #495057;
 		padding: 6px 8px;
-		border: 1px solid #ccc;
+		border: 1px solid #82c91e;
 		border-radius: 0.6em;
 	}
 	.fa-square-plus {
@@ -184,9 +94,9 @@
 		border: none;
 		width: 20%;
 		height: 100%;
-
+		background: #495057;
 		padding: 6px 8px;
-		border: 1px solid #ccc;
+		border: 1px solid #82c91e;
 		border-radius: 0.6em;
 	}
 	.fa-square-plus {
@@ -210,24 +120,7 @@
 	}
 
 	input:focus {
-		outline: 1px solid lime;
-	}
-
-	/* .container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#avatar {
-		border-radius: 99999px;
-		height: 128px;
-		width: 128px;
-		margin-bottom: 10px;
-	}
-
-	.hidden {
-		display: none;
+		outline: 1px solid #82c91e;
 	}
 
 	.upload-btn {
@@ -244,5 +137,5 @@
 		background-color: white;
 		color: black;
 		outline: black solid 2px;
-	} */
+	}
 </style>

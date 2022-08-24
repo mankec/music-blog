@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths'
-	import AddAlbum from '$root/components/add_album.svelte'
-	import type { AlbumType } from '$root/types'
 	import type { PageData } from '@sveltejs/kit/types/internal'
 
 	export let data: PageData
@@ -52,6 +50,7 @@
 		margin-top: 1rem;
 		padding-bottom: 0.1rem;
 		padding-right: 0.8rem;
+		color: #ced4da;
 		border-bottom: 3px solid #66a80f;
 	}
 

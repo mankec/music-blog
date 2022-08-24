@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths'
+	import { page } from '$app/stores'
 </script>
 
 <nav class="navbar">
@@ -9,27 +10,15 @@
 		<li><a href="{base}/home/album">Albums</a></li>
 		<li><a href="{base}/home/genre">Genres</a></li>
 
-		<!-- {#if !$session.user}
-			<li>
-				<a href="{base}/auth/login">Login</a>
+		{#if $page.data.user}
+			<li class="logout">
+				<a href="{base}/logout">Log out</a>
 			</li>
-			<li><a href="{base}/auth/register">Register</a></li>
 		{/if}
-
-		{#if $session.user}
-			<li><a href="{base}/protected">Admin</a></li>
-			<li><a href="{base}/auth/logout">Log out</a></li>
-		{/if} -->
 	</ul>
 </nav>
 
 <style>
-	.navbar a {
-		font-size: 2rem;
-		color: orange;
-		margin: 2.5rem auto;
-	}
-
 	.navbar {
 		width: 16%;
 		height: 100%;
@@ -61,17 +50,24 @@
 		padding: 0.5rem 0.5rem 0 0;
 		width: 100%;
 
-		border-bottom: 1px solid lime;
+		border-bottom: 1px solid #868e96;
 	}
 
-	.navbar li a {
+	.navbar a {
+		margin: 2.5rem auto;
+	}
+
+	.navbar a {
 		text-decoration: none;
-		font-size: 1.4rem;
-		color: orange;
+		font-size: 1.6rem;
+		color: #66a80f;
 	}
 
-	.navbar li a:hover {
-		text-decoration: underline;
-		color: orange;
+	.logout a {
+		color: #c92a2a;
+	}
+
+	.logout a:hover {
+		color: #ff6b6b;
 	}
 </style>

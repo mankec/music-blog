@@ -2,8 +2,6 @@ import type { RequestHandler } from '@sveltejs/kit'
 import prisma from '$lib/prisma'
 
 export async function POST({ request, params }: any) {
-  console.log('FORM')
-
   const form = await request.formData()
 
   let album_name: any = String(form.get('album_name'))

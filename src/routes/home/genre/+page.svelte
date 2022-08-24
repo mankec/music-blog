@@ -49,6 +49,7 @@
 		padding-bottom: 0.1rem;
 		padding-right: 0.8rem;
 		font-size: 3.2rem;
+		color: #ced4da;
 		border-bottom: 3px solid #66a80f;
 
 		display: inline-block;

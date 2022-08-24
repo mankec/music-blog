@@ -32,6 +32,7 @@
 	label {
 		margin-bottom: 3rem;
 		font-size: 2.2rem;
+		color: #ced4da;
 		text-align: center;
 
 		display: block;
@@ -41,7 +42,7 @@
 		margin-top: 1.25rem;
 		margin-right: 1.25rem;
 		height: 22rem;
-		border: 4px solid white;
+		border: 4px solid #212529;
 		border-radius: 1.6em;
 
 		display: flex;
@@ -62,11 +63,11 @@
 
 	input[type='text'].add-genre-track-input {
 		border: none;
-		width: 50%;
+		width: 40%;
 		height: 100%;
-
+		background: #495057;
 		padding: 6px 8px;
-		border: 1px solid #ccc;
+		border: 1px solid #82c91e;
 		border-radius: 0.6em;
 	}
 	.fa-square-plus {
