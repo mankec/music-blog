@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/stores'
 	import Home from '$root/components/home.svelte'
 </script>
 
-<Home />
-
-<style>
-</style>
+{#if $page.data.user}
+	<Home />
+{/if}

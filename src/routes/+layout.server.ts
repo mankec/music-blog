@@ -8,7 +8,7 @@ export async function load({ request }: any) {
 
   const cookies = cookie.parse(cookieHeader)
   const token = cookies.session
-
+  // console.log(token)
   if (token) {
     const find_user = await prisma.user.findUnique({
       where: { user_auth_token: token }

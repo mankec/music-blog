@@ -76,10 +76,17 @@ export async function POST({ request, setHeaders }: any) {
   };
 }
 
-export async function load({ setHeaders }: any) {
+export async function load({ request }: any) {
+  let cookieHeader = request.headers.get('cookie')
+  if (!cookieHeader) cookieHeader = ''
 
-  const user = await prisma.user.findFirst({})
-  console.log(user)
-  if (user)
+  const cookies = cookie.parse(cookieHeader)
+  const token = cookies.session
+
+
+  if (token)
     throw redirect(307, '/home')
-}
+  else
+    return {}
+
+}     

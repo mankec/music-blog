@@ -3,6 +3,3 @@
 </script>
 
 <SignIn />
-
-<style>
-</style>

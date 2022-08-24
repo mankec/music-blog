@@ -12,5 +12,7 @@ export async function GET({ setHeaders }: any) {
     location: '/login'
   })
 
-  throw redirect(307, '/login')
+  throw redirect(302, '/login')
+
+
 }

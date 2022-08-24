@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { base } from '$app/paths'
 	import { page } from '$app/stores'
+
+	function hide_url() {
+		window.location.href = `${base}/logout`
+	}
 </script>
 
 <nav class="navbar">
@@ -12,7 +16,8 @@
 
 		{#if $page.data.user}
 			<li class="logout">
-				<a href="{base}/logout">Log out</a>
+				<!-- svelte-ignore a11y-missing-attribute -->
+				<a on:click={hide_url}>Log out</a>
 			</li>
 		{/if}
 	</ul>
@@ -64,6 +69,7 @@
 	}
 
 	.logout a {
+		cursor: pointer;
 		color: #c92a2a;
 	}
 
