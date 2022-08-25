@@ -1,8 +1,11 @@
 import prisma from "$lib/prisma";
+import { base } from '$app/paths'
 import * as cookie from 'cookie'
+import { redirect } from "@sveltejs/kit";
 
 /** @type {import('./$types').LayoutServerLoad} */
-export async function load({ request }: any) {
+export async function load({ request, url }: any) {
+
   let cookieHeader = request.headers.get('cookie')
   if (!cookieHeader) cookieHeader = ''
 
@@ -19,5 +22,9 @@ export async function load({ request }: any) {
 
   if (!token) {
     return {}
+  }
+
+  if (url.pathname === `/` && token) {
+    throw redirect(302, '/home')
   }
 }
