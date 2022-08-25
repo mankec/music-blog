@@ -50,7 +50,7 @@
 	function sendJSON(image: any) {
 		// Creating a XHR object
 		let xhr = new XMLHttpRequest()
-		let url = `/home/album/${album.id}`
+		let url = `/api/${album.id}`
 
 		// open a connection
 		xhr.open('POST', url, true)
@@ -130,7 +130,7 @@
 			</ol>
 		</div>
 		<div class="add-artist">
-			<AddGenreOrTrack />
+			<AddGenreOrTrack {album} />
 		</div>
 	</div>
 </div>

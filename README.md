@@ -47,11 +47,7 @@ Make ids numbers if possible
 
 Do not specify form action if you are sending data to the endpoint of the page you are on, not only is it unnecessary it won't work either.
 
-Netlify
-[build]
-command = "npm run build"
-publish = "build/"
-functions = "functions/"
+\
 
     "engines": {
     	"npm": "8.12.1",

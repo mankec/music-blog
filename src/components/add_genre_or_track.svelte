@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { enhance } from '$lib/form'
-
 	let genre_name = ''
 	let track_name = ''
+	export let album: any
 </script>
 
 <div class="albums-content-container">
-	<form class="form" action="" method="post">
+	<form
+		class="form"
+		action="/home/album/{album.id}"
+		method="post"
+	>
 		<label for="add-genre-or-track"
 			>Add some genres or tracks</label
 		>
