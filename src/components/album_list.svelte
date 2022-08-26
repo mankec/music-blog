@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths'
-	import { slugify } from '$lib/helper'
-
 	import type { AlbumType } from '$root/types'
 
 	export let album: AlbumType

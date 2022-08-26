@@ -2,6 +2,7 @@ import * as cookie from 'cookie'
 import { redirect } from '@sveltejs/kit'
 
 export async function load({ request }: any) {
+
   let cookieHeader = request.headers.get('cookie')
   if (!cookieHeader) cookieHeader = ''
 

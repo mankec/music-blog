@@ -9,32 +9,36 @@
 	const album = data.album
 	const genres = data.genres
 	const tracks = data.tracks
-	let album_cover: any
-	let fileinput: any
+	let album_cover: string
+	let new_album_cover: string
+	let fileinput: HTMLInputElement
 	let files: any
+	let image_changed: boolean
 
-	export function index(tracks: any, track: any) {
+	export function index(tracks: string[], track: string) {
 		return tracks.indexOf(track) + 1
 	}
 
-	function getBase64(image: any) {
+	function get_image(image: Blob) {
 		const reader = new FileReader()
 		const r = reader.readAsDataURL(image)
 		reader.onload = (e: any) => {
-			album_cover = e.target.result
-			// uploadFunction(e.target.result)
-			sendJSON(e.target.result)
+			if (e.target.result !== album_cover) {
+				image_changed = true
+				new_album_cover = e.target?.result
+				axios_post(new_album_cover)
+			} else image_changed = false
 		}
 	}
 
-	async function uploadFunction(imgBase64: any) {
+	async function axios_post(imgBase64: any) {
 		const data: any = {}
+		console.log(imgBase64)
 		const imgData = imgBase64.split(',')
 		data['image'] = imgData[1]
-		let string: any = imgData[1]
 		axios({
 			method: 'post',
-			url: '/api',
+			url: `/api/${album.id}`,
 			data: {
 				data
 			}
@@ -46,43 +50,22 @@
 				console.log(error)
 			})
 	}
-
-	function sendJSON(image: any) {
-		// Creating a XHR object
-		let xhr = new XMLHttpRequest()
-		let url = `/api/${album.id}`
-
-		// open a connection
-		xhr.open('POST', url, true)
-
-		// Set the request header i.e. which type of content you are sending
-		xhr.setRequestHeader('Content-Type', 'application/json')
-
-		// Create a state change callback
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-				console.log('Sent data successfully')
-			}
-		}
-		const data_img: any = {}
-		const imgData = image.split(',')
-		data_img['image'] = imgData[1]
-		// Converting JSON data to string
-		const data = JSON.stringify({ data_img })
-
-		// Sending data with the request
-		xhr.send(data)
-	}
 </script>
 
-<div class="image-container">
+<div
+	on:click={() => {
+		fileinput.click()
+	}}
+	class="image-container"
+>
 	{#if album_cover}
 		<img class="album-cover" src={album_cover} alt="" />
 	{/if}
+	<!-- prettier-ignore -->
 	{#if album.cover_img}
 		<img
 			class="album-cover"
-			src="data:image/jpeg;base64,{album.cover_img}"
+			src="{image_changed ? new_album_cover : `data:image/jpeg;base64,${album.cover_img}`}"
 			alt=""
 		/>
 	{/if}
@@ -93,7 +76,7 @@
 		accept=".png,.jpg"
 		bind:files
 		bind:this={fileinput}
-		on:change={() => getBase64(files[0])}
+		on:change={() => get_image(files[0])}
 	/>
 	<!-- prettier-ignore -->
 	<img
@@ -141,10 +124,6 @@
 		height: 30rem;
 		display: inline;
 		border-radius: 50%;
-
-		/* position: absolute;
-		top: 1.25rem;
-		left: 3rem; */
 	}
 
 	.hidden {
@@ -157,6 +136,7 @@
 		background-color: #ced4da;
 		display: inline;
 		border-radius: 50%;
+		cursor: pointer;
 
 		position: absolute;
 		top: 1.25rem;

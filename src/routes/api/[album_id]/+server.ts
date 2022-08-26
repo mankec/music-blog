@@ -1,15 +1,12 @@
 import prisma from '$lib/prisma'
 
 export async function POST({ request, params }: any) {
-  console.log('hit')
-  // console.log(request)
-
 
   const body = await request.json()
-  const image = body.data_img.image
+  const image = body.data.image
 
   await prisma.album.update({
-    where: { id: params.id },
+    where: { id: params.album_id },
     data: { cover_img: image }
   })
 
