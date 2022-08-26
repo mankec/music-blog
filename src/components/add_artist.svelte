@@ -63,6 +63,7 @@
 		border: none;
 		width: 40%;
 		height: 100%;
+    color: #ced4da;
 		background: #495057;
 		padding: 6px 8px;
 		border: 1px solid #82c91e;

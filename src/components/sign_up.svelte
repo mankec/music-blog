@@ -73,6 +73,7 @@
 		width: 100%;
 		height: 100%;
 		padding: 6px 8px;
+		color: #ced4da;
 		background: #495057;
 		border: 1px solid #82c91e;
 		border-radius: 0.6em;
