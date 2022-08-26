@@ -122,20 +122,4 @@
 	input:focus {
 		outline: 1px solid #82c91e;
 	}
-
-	.upload-btn {
-		width: 128px;
-		height: 32px;
-		background-color: black;
-		font-family: sans-serif;
-		color: white;
-		font-weight: bold;
-		border: none;
-	}
-
-	.upload-btn:hover {
-		background-color: white;
-		color: black;
-		outline: black solid 2px;
-	}
 </style>

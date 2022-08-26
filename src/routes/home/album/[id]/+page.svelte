@@ -13,7 +13,8 @@
 	let new_album_cover: string
 	let fileinput: HTMLInputElement
 	let files: any
-	let image_changed: boolean
+	let image_changed: boolean = false
+	let first_input: boolean
 
 	export function index(tracks: string[], track: string) {
 		return tracks.indexOf(track) + 1
@@ -23,19 +24,18 @@
 		const reader = new FileReader()
 		const r = reader.readAsDataURL(image)
 		reader.onload = (e: any) => {
-			if (e.target.result !== album_cover) {
+			album_cover = e.target?.result
+
+			if (album_cover.split(',')[1] !== album.cover_img) {
 				image_changed = true
-				new_album_cover = e.target?.result
-				axios_post(new_album_cover)
+				axios_post(album_cover.split(',')[1])
 			} else image_changed = false
 		}
 	}
 
-	async function axios_post(imgBase64: any) {
+	async function axios_post(album_cover: any) {
 		const data: any = {}
-		console.log(imgBase64)
-		const imgData = imgBase64.split(',')
-		data['image'] = imgData[1]
+		data['image'] = album_cover
 		axios({
 			method: 'post',
 			url: `/api/${album.id}`,
@@ -58,14 +58,14 @@
 	}}
 	class="image-container"
 >
-	{#if album_cover}
+	{#if album_cover && !album.cover_img}
 		<img class="album-cover" src={album_cover} alt="" />
 	{/if}
 	<!-- prettier-ignore -->
 	{#if album.cover_img}
 		<img
 			class="album-cover"
-			src="{image_changed ? new_album_cover : `data:image/jpeg;base64,${album.cover_img}`}"
+			src="{image_changed ? album_cover : `data:image/jpeg;base64,${album.cover_img}`}"
 			alt=""
 		/>
 	{/if}
@@ -83,9 +83,6 @@
 		class={album.cover_img || album_cover ? 'hidden' : 'upload'}
 		src="https://static.thenounproject.com/png/625182-200.png"
 		alt=""
-		on:click={() => {
-			fileinput.click()
-		}}
 	/>
 </div>
 <div class="container">

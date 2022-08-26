@@ -30,7 +30,7 @@
 <style>
 	.container {
 		width: 68%;
-		height: 100%;
+		height: auto;
 		margin: 0 auto;
 		/* background-color: blue; */
 	}
